@@ -142,7 +142,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 782a0abf7e8175f4eb615b61a55438b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 8165912123516415166}
+  cameraObj: {fileID: 8165912123516415166}
+  movementSpeed: 5
+  mouseSensitivityX: 5
+  mouseSensitivityY: 5
   latency: 0
   smoothingFactor: 10
 --- !u!114 &114480638323780778
@@ -239,7 +242,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 26.991467
+  field of view: 90
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
