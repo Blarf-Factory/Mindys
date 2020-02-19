@@ -8,7 +8,7 @@ public class PlayerConnectionObject : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (isLocalPlayer == false)
+        if (!isLocalPlayer)
         {
             return;
         }
@@ -18,10 +18,13 @@ public class PlayerConnectionObject : NetworkBehaviour
 
     public GameObject PlayerUnit;
 
+    [SyncVar]
+    public string PlayerName = "Loser";
+
     // Update is called once per frame
     void Update()
     {
-        if (isLocalPlayer == false)
+        if (!isLocalPlayer)
         {
             return;
         }
@@ -38,5 +41,18 @@ public class PlayerConnectionObject : NetworkBehaviour
         myPlayerUnit = player;
         
         NetworkServer.SpawnWithClientAuthority(player, connectionToClient);
+    }
+
+    [Command]
+    void CmdChangePlayerName(string n)
+    {
+        PlayerName = n;
+        //RpcChangePlayerName(PlayerName);
+    }
+
+    [ClientRpc]
+    void RpcChangePlayerName(string n)
+    {
+        PlayerName = n;
     }
 }

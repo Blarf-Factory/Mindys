@@ -337,7 +337,7 @@ MonoBehaviour:
   m_AutoCreatePlayer: 1
   m_PlayerSpawnMethod: 0
   m_OfflineScene: 
-  m_OnlineScene: 
+  m_OnlineScene: Test_Stage
   m_SpawnPrefabs:
   - {fileID: 4798978473623283931, guid: 8f067bd47fe5cb8409e0e98f00021efb, type: 3}
   m_CustomConfig: 0
