@@ -24,10 +24,11 @@ public class PlayerUnit : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
+        //velocity = new Vector3(0, 0, 0);
         if (!hasAuthority)
         {
             estPostion = estPostion + (velocity * Time.deltaTime);
-            transform.position = Vector3.Lerp(transform.position, estPostion, (Time.deltaTime * smoothingFactor));
+            transform.position = estPostion;                 //Vector3.Lerp(transform.position, estPostion, (Time.deltaTime * smoothingFactor));
             return;
         }
         //GetComponent<Camera>().SetActive(true);
@@ -36,36 +37,34 @@ public class PlayerUnit : NetworkBehaviour
         transform.Translate(velocity * Time.deltaTime);
 
 		MagBootsControls();
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            transform.Translate(0, 1, 0);
-        }
-
-        if (false)
-        {
-            velocity = new Vector3(1, 0, 0);
-            CmdUpdateVelocity(velocity, transform.position);
-        }
+        
     }
 
 	void MagBootsControls()
     {
         if (Input.GetKey(KeyCode.W))
         {
-            this.transform.Translate(Vector3.forward * Time.deltaTime);
+            //this.transform.Translate(Vector3.forward * Time.deltaTime);
+            velocity = new Vector3(0, 0, 1);
+            CmdUpdateVelocity(velocity, transform.position);
         }
         if (Input.GetKey(KeyCode.S))
         {
-            this.transform.Translate(Vector3.back * Time.deltaTime);
+            //this.transform.Translate(Vector3.back * Time.deltaTime);
+            velocity = new Vector3(0, 0, -1);
+            CmdUpdateVelocity(velocity, transform.position);
         }
         if (Input.GetKey(KeyCode.A))
         {
-            this.transform.Translate(Vector3.left * Time.deltaTime);
+            //this.transform.Translate(Vector3.left * Time.deltaTime);
+            velocity = new Vector3(-1, 0, 0);
+            CmdUpdateVelocity(velocity, transform.position);
         }
         if (Input.GetKey(KeyCode.D))
         {
-            this.transform.Translate(Vector3.right * Time.deltaTime);
+            //this.transform.Translate(Vector3.right * Time.deltaTime);
+            velocity = new Vector3(1, 0, 0);
+            CmdUpdateVelocity(velocity, transform.position);
         }
     }
 
