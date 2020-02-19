@@ -16,6 +16,11 @@ public class PlayerUnit : NetworkBehaviour
         }
     }
 
+    private void Awake()
+    {
+        camera.SetActive(true);
+    }
+
     Vector3 velocity;
     Vector3 estPostion;
     public float latency = 1;
@@ -31,8 +36,7 @@ public class PlayerUnit : NetworkBehaviour
             transform.position = estPostion;                 //Vector3.Lerp(transform.position, estPostion, (Time.deltaTime * smoothingFactor));
             return;
         }
-        //GetComponent<Camera>().SetActive(true);
-        camera.SetActive(true);
+        
 
         transform.Translate(velocity * Time.deltaTime);
 
@@ -48,22 +52,27 @@ public class PlayerUnit : NetworkBehaviour
             velocity = new Vector3(0, 0, 1);
             CmdUpdateVelocity(velocity, transform.position);
         }
-        if (Input.GetKey(KeyCode.S))
+        else if (Input.GetKey(KeyCode.S))
         {
             //this.transform.Translate(Vector3.back * Time.deltaTime);
             velocity = new Vector3(0, 0, -1);
             CmdUpdateVelocity(velocity, transform.position);
         }
-        if (Input.GetKey(KeyCode.A))
+        else if (Input.GetKey(KeyCode.A))
         {
             //this.transform.Translate(Vector3.left * Time.deltaTime);
             velocity = new Vector3(-1, 0, 0);
             CmdUpdateVelocity(velocity, transform.position);
         }
-        if (Input.GetKey(KeyCode.D))
+        else if (Input.GetKey(KeyCode.D))
         {
             //this.transform.Translate(Vector3.right * Time.deltaTime);
             velocity = new Vector3(1, 0, 0);
+            CmdUpdateVelocity(velocity, transform.position);
+        }
+        else
+        {
+            velocity = new Vector3(0, 0, 0);
             CmdUpdateVelocity(velocity, transform.position);
         }
     }
