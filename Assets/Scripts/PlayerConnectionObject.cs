@@ -12,7 +12,7 @@ public class PlayerConnectionObject : NetworkBehaviour
         {
             return;
         }
-
+        
         CmdSpawn();
     }
 
@@ -39,7 +39,6 @@ public class PlayerConnectionObject : NetworkBehaviour
         GameObject player = Instantiate(PlayerUnit);
 
         myPlayerUnit = player;
-        
         NetworkServer.SpawnWithClientAuthority(player, connectionToClient);
     }
 
