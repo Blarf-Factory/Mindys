@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2139963117125530299}
   - component: {fileID: 3357204419291683958}
   - component: {fileID: 1740788983857061447}
-  - component: {fileID: 6919784375109876256}
   m_Layer: 0
   m_Name: PlayerConnectionObject
   m_TagString: Untagged
@@ -81,15 +80,3 @@ MonoBehaviour:
   PlayerUnit: {fileID: 4798978473623283931, guid: 8f067bd47fe5cb8409e0e98f00021efb,
     type: 3}
   PlayerName: Loser
---- !u!114 &6919784375109876256
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2918422948831579844}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e300dddc1e34dee4dbe920033f077e5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
