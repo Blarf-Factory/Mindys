@@ -52,7 +52,7 @@ public class Upnp : MonoBehaviour
             .Unwrap()
             .ContinueWith(task =>
             {
-                sb.AppendFormat("\nAdded mapping: {0}:1700 -> 127.0.0.1:1600\n", ip);
+                sb.AppendFormat("\nAdded mapping: {0}:7777 -> 127.0.0.1:7777\n", ip);
                 sb.AppendFormat("\n+------+-------------------------------+--------------------------------+------------------------------------+-------------------------+");
                 sb.AppendFormat("\n| PORT | PUBLIC (Reacheable)           | PRIVATE (Your computer)        | Description                        |                         |");
                 sb.AppendFormat("\n+------+----------------------+--------+-----------------------+--------+------------------------------------+-------------------------+");
@@ -70,7 +70,7 @@ public class Upnp : MonoBehaviour
                         mapping.Protocol == Protocol.Tcp ? "TCP" : "UDP", mapping.Expiration.ToLocalTime());
                 }
                 sb.AppendFormat("\n+------+----------------------+--------+-----------------------+--------+------------------------------------+-------------------------+");
-                sb.AppendFormat("\n[Removing TCP mapping] {0}:1700 -> 127.0.0.1:1600", ip);
+                sb.AppendFormat("\n[Removing TCP mapping] {0}:7777 -> 127.0.0.1:7777", ip);
                 return device.DeletePortMapAsync(new Mapping(Protocol.Tcp, 1600, 1700));
             })
             .Unwrap()
