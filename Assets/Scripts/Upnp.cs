@@ -12,11 +12,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Networking;
 
-public class PortForwarding : NetworkBehaviour
+public class Upnp : MonoBehaviour
 {
-    void Start()
+    public void Start()
     {
-        Test().Wait();
+        Test().Wait(1000);
     }
 
     private static Task Test()
@@ -81,3 +81,4 @@ public class PortForwarding : NetworkBehaviour
             });
     }
 }
+
