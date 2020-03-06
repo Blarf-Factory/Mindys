@@ -144,8 +144,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraObj: {fileID: 8165912123516415166}
   movementSpeed: 5
-  mouseSensitivityX: 5
-  mouseSensitivityY: 5
+  xSensitivity: 50
+  ySensitivity: 50
+  sprintSpeed: 1.5
   latency: 0
   smoothingFactor: 10
 --- !u!114 &114480638323780778

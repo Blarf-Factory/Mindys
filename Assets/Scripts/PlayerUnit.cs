@@ -7,9 +7,9 @@ using UnityEngine.Networking;
 public class PlayerUnit : NetworkBehaviour
 {
     public GameObject cameraObj;
-    public float movementSpeed = 5;
-    public float mouseSensitivityX = 5;
-    public float mouseSensitivityY = 5;
+    public float movementSpeed = 5f;
+    public float xSensitivity = 5f;
+    public float ySensitivity = 5f;
     public float sprintSpeed = 1.5f;
 
     // Start is called before the first frame update
@@ -61,13 +61,11 @@ public class PlayerUnit : NetworkBehaviour
         float camPitch = cameraObj.transform.localEulerAngles.x;
         float camYaw = cameraObj.transform.localEulerAngles.y;
 
-        pitch = mouseSensitivityY * Input.GetAxisRaw("Vertical"); // get mouse pitch
-        yaw = mouseSensitivityX * Input.GetAxisRaw("Horizontal"); // get mouse yaw
+        pitch = ySensitivity * Input.GetAxisRaw("Vertical") * Time.deltaTime; // get mouse pitch
+        yaw = xSensitivity * Input.GetAxisRaw("Horizontal") * Time.deltaTime; // get mouse yaw
 
         this.transform.Rotate(0f, yaw, 0f); // turns player
         cameraObj.transform.Rotate(-pitch, 0f, 0f); // moves camera up and down
-
-        Debug.Log(cameraObj.transform.localEulerAngles.x + " " + cameraObj.transform.localEulerAngles.y + " " + cameraObj.transform.localEulerAngles.z);
         
         if ( (camPitch < upperViewLimit || camYaw != 0) && camPitch > 180)
         {
@@ -83,10 +81,7 @@ public class PlayerUnit : NetworkBehaviour
 	void MagBootsControls()
     {
         velocity = new Vector3(0, 0, 0);
-        float modifier = 1; // used for sprint or other effects
-
-        Debug.Log("Input Walk: " + Input.GetButton("Walk"));
-        Debug.Log("Axis Walk: " + Input.GetAxis("Walk"));
+        float modifier = 1; // used for sprint and other effects
 
         if (Input.GetButton("Walk"))
         {
