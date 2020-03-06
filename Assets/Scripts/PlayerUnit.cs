@@ -54,55 +54,52 @@ public class PlayerUnit : NetworkBehaviour
     {
         float pitch = 0;
         float yaw = 0;
-        float viewRange = 200;
+        float upperViewLimit = 280;
+        float lowerViewLimit = 80;
+        
+        float camPitch = cameraObj.transform.localEulerAngles.x;
+        float camYaw = cameraObj.transform.localEulerAngles.y;
 
-        pitch = mouseSensitivityY * Input.GetAxisRaw("Mouse Y"); // get mouse pitch
-        yaw = mouseSensitivityX * Input.GetAxisRaw("Mouse X"); // get mouse yaw
+        pitch = mouseSensitivityY * Input.GetAxisRaw("Vertical"); // get mouse pitch
+        yaw = mouseSensitivityX * Input.GetAxisRaw("Horizontal"); // get mouse yaw
 
         this.transform.Rotate(0f, yaw, 0f); // turns player
         cameraObj.transform.Rotate(-pitch, 0f, 0f); // moves camera up and down
 
-        // if (cameraObj.transform.localEulerAngles.x > viewRange // check to see if camera view is outside range
-        //     && cameraObj.transform.localEulerAngles.x < 180)
-        // {
-        //     cameraObj.transform.localEulerAngles = new Vector3(viewRange, 0, 0); // reset camera position to inside range
-        // }
+        Debug.Log(cameraObj.transform.localEulerAngles.x + " " + cameraObj.transform.localEulerAngles.y + " " + cameraObj.transform.localEulerAngles.z);
+        
+        if ( (camPitch < upperViewLimit || camYaw != 0) && camPitch > 180)
+        {
+           cameraObj.transform.localEulerAngles = new Vector3(upperViewLimit + 0.001f, 0, 0); // reset camera position to inside range
+        }
 
-        // if (cameraObj.transform.localEulerAngles.x < viewRange + 200
-        //             && cameraObj.transform.localEulerAngles.x > 180) // check to see if camera view is outside range
-        // {
-        //     cameraObj.transform.localEulerAngles = new Vector3(-viewRange, 0, 0); // reset camera position to inside range
-        // }
+        if ( (camPitch > lowerViewLimit || camYaw != 0) && camPitch < 180) // check to see if camera view is outside range
+        {
+           cameraObj.transform.localEulerAngles = new Vector3(lowerViewLimit - 0.001f, 0, 0); // reset camera position to inside range
+        }
     }
 
 	void MagBootsControls()
     {
         velocity = new Vector3(0, 0, 0);
+        
+        Debug.Log("Input Walk: " + Input.GetButton("Walk"));
+        Debug.Log("Axis Walk: " + Input.GetAxis("Walk"));
 
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetButton("Walk"))
         {
             //this.transform.Translate(Vector3.forward * Time.deltaTime);
-            velocity += Vector3.forward * movementSpeed;
+            velocity += Vector3.forward * Input.GetAxis("Walk") * movementSpeed;
             CmdUpdateVelocity(velocity, transform.position);
         }
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetButton("Strafe"))
         {
-            //this.transform.Translate(Vector3.back * Time.deltaTime);
-            velocity += Vector3.back * movementSpeed;
+            //this.transform.Translate(Vector3.forward * Time.deltaTime);
+            velocity += Vector3.right * Input.GetAxis("Strafe") * movementSpeed;
             CmdUpdateVelocity(velocity, transform.position);
         }
-        if (Input.GetKey(KeyCode.A))
-        {
-            //this.transform.Translate(Vector3.left * Time.deltaTime);
-            velocity += Vector3.left * movementSpeed;
-            CmdUpdateVelocity(velocity, transform.position);
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            //this.transform.Translate(Vector3.right * Time.deltaTime);
-            velocity += Vector3.right * movementSpeed;
 
-        }   
+
         CmdUpdateVelocity(velocity, transform.position);
     }
 
