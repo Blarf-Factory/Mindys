@@ -34,12 +34,12 @@ public class Gravity : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.name == "Floor Grav Trigger")
+        if (col.gameObject.name == "Floor Gravity")
         {
             gravity = true;
             floor = true;
         }
-        else if (col.gameObject.name == "Ceiling Grav Trigger")
+        else if (col.gameObject.name == "Ceiling Gravity")
         {
             gravity = true;
             floor = false;
