@@ -66,7 +66,7 @@ public class PlayerUnit : NetworkBehaviour
 
         this.transform.Rotate(0f, yaw, 0f); // turns player
         cameraObj.transform.Rotate(-pitch, 0f, 0f); // moves camera up and down
-        
+
         if ( (camPitch < upperViewLimit || camYaw != 0) && camPitch > 180)
         {
            cameraObj.transform.localEulerAngles = new Vector3(upperViewLimit + 0.001f, 0, 0); // reset camera position to inside range
@@ -83,20 +83,31 @@ public class PlayerUnit : NetworkBehaviour
         velocity = new Vector3(0, 0, 0);
         float modifier = 1; // used for sprint and other effects
 
-        if (Input.GetButton("Walk"))
+        Debug.Log("L x-axis: " + Input.GetAxisRaw("Strafe"));
+        Debug.Log("L y-axis: " + Input.GetAxisRaw("Walk"));
+        float xInput = Input.GetAxisRaw("Strafe");
+        float yInput = Input.GetAxisRaw("Walk");
+
+
+        if (yInput != 0)
         {
+            
             //this.transform.Translate(Vector3.forward * Time.deltaTime);
-            if (Input.GetAxis("Walk") > 0 && Input.GetButton("Sprint"))
+            if (yInput > 0 && Input.GetButton("Sprint"))
             {
                 modifier = sprintSpeed;
             }
-            velocity += Vector3.forward * Input.GetAxis("Walk") * movementSpeed * modifier;
+            velocity += Vector3.forward * yInput * movementSpeed * modifier;
+            
+            Debug.Log("Velocity: " + velocity + " yInput: " + yInput);
+
             CmdUpdateVelocity(velocity, transform.position);
         }
-        if (Input.GetButton("Strafe"))
+        if (xInput != 0)
         {
+            
             //this.transform.Translate(Vector3.forward * Time.deltaTime);
-            velocity += Vector3.right * Input.GetAxis("Strafe") * movementSpeed;
+            velocity += Vector3.right * xInput * movementSpeed;
             CmdUpdateVelocity(velocity, transform.position);
         }
 

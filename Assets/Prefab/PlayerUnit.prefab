@@ -144,8 +144,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraObj: {fileID: 8165912123516415166}
   movementSpeed: 5
-  xSensitivity: 50
-  ySensitivity: 50
+  xSensitivity: 200
+  ySensitivity: 200
   sprintSpeed: 1.5
   latency: 0
   smoothingFactor: 10
@@ -185,7 +185,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!1 &8165912123516415166
 GameObject:
