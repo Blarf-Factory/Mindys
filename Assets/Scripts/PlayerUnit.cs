@@ -10,6 +10,7 @@ public class PlayerUnit : NetworkBehaviour
     public float movementSpeed = 5;
     public float mouseSensitivityX = 5;
     public float mouseSensitivityY = 5;
+    public float sprintSpeed = 1.5f;
 
     // Start is called before the first frame update
     void Start()
@@ -82,14 +83,19 @@ public class PlayerUnit : NetworkBehaviour
 	void MagBootsControls()
     {
         velocity = new Vector3(0, 0, 0);
-        
+        float modifier = 1; // used for sprint or other effects
+
         Debug.Log("Input Walk: " + Input.GetButton("Walk"));
         Debug.Log("Axis Walk: " + Input.GetAxis("Walk"));
 
         if (Input.GetButton("Walk"))
         {
             //this.transform.Translate(Vector3.forward * Time.deltaTime);
-            velocity += Vector3.forward * Input.GetAxis("Walk") * movementSpeed;
+            if (Input.GetAxis("Walk") > 0 && Input.GetButton("Sprint"))
+            {
+                modifier = sprintSpeed;
+            }
+            velocity += Vector3.forward * Input.GetAxis("Walk") * movementSpeed * modifier;
             CmdUpdateVelocity(velocity, transform.position);
         }
         if (Input.GetButton("Strafe"))
@@ -98,7 +104,6 @@ public class PlayerUnit : NetworkBehaviour
             velocity += Vector3.right * Input.GetAxis("Strafe") * movementSpeed;
             CmdUpdateVelocity(velocity, transform.position);
         }
-
 
         CmdUpdateVelocity(velocity, transform.position);
     }
