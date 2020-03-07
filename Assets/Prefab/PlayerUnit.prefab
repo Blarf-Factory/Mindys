@@ -144,11 +144,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraObj: {fileID: 8165912123516415166}
   movementSpeed: 5
+  ZeroGMoveSpeed: 40
   xSensitivity: 250
   ySensitivity: 250
   sprintSpeed: 1.5
+  jumpHeight: 1
   gravity: 400
   playerRB: {fileID: 54236427970331946}
+  magboots: 1
+  reorient: 0
+  reorientSpeed: 75
   latency: 0
   smoothingFactor: 10
 --- !u!114 &114480638323780778
