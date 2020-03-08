@@ -57,7 +57,7 @@ public class MainMenuControl : MonoBehaviour
     }
     public void newGame()
     {
-        SceneManager.LoadScene("New_Game.scene");
+        SceneManager.LoadScene("Test_Stage");
     }
 
     public void continueGame()

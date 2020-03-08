@@ -211,5 +211,21 @@ InputManager:
     snap: 0
     invert: 0
     type: 2
+    axis: 2
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: Y
+    descriptiveName: Y or F
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: f
+    altNegativeButton: 
+    altPositiveButton: joystick button 3
+    gravity: 1000
+    dead: 0.1
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
     axis: 4
     joyNum: 0

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class PlayerUnit : NetworkBehaviour
+public class PlayerUnit : MonoBehaviour
 {
     public GameObject cameraObj;
     public float movementSpeed = 5f;
@@ -20,7 +20,7 @@ public class PlayerUnit : NetworkBehaviour
     public float reorientSpeed = 75f;
     private Quaternion targetRotation;
     
-
+    /*
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +34,7 @@ public class PlayerUnit : NetworkBehaviour
     {
         
     }
+    */
 
     Vector3 velocity;
     Vector3 estPostion;
@@ -43,6 +44,7 @@ public class PlayerUnit : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         //velocity = new Vector3(0, 0, 0);
         if (!hasAuthority)
         {
@@ -50,7 +52,14 @@ public class PlayerUnit : NetworkBehaviour
             transform.position = estPostion;                 //Vector3.Lerp(transform.position, estPostion, (Time.deltaTime * smoothingFactor));
             return;
         }
-        
+
+        if (!hasAuthority)
+        {
+            estPostion = estPostion + (velocity * Time.deltaTime);
+            transform.position = estPostion;                 //Vector3.Lerp(transform.position, estPostion, (Time.deltaTime * smoothingFactor));
+            return;
+        }
+        */
 
         transform.Translate(velocity * Time.deltaTime);
 
@@ -165,7 +174,7 @@ public class PlayerUnit : NetworkBehaviour
             OrientPlayerToCamera();
         }
 
-        CmdUpdateVelocity(velocity, transform.position);
+        //CmdUpdateVelocity(velocity, transform.position);
     }
 
     void ZeroGravControls()
@@ -206,7 +215,7 @@ public class PlayerUnit : NetworkBehaviour
 
         velocity += playerRB.velocity;
 
-        CmdUpdateVelocity(velocity, transform.position);
+        //CmdUpdateVelocity(velocity, transform.position);
     }
 
     void OrientPlayerToCamera()
@@ -241,7 +250,7 @@ public class PlayerUnit : NetworkBehaviour
                 reorient = false;
             }
     }
-
+    /*
     [Command]
     void CmdUpdateVelocity(Vector3 v, Vector3 p)
     {
@@ -264,4 +273,5 @@ public class PlayerUnit : NetworkBehaviour
         velocity = v;
         estPostion = p + (velocity * (latency));
     }
+    */
 }
