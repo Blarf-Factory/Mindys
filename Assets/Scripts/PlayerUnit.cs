@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class PlayerUnit : MonoBehaviour
+public class PlayerUnit : NetworkBehaviour
 {
     public GameObject cameraObj;
     public float movementSpeed = 5f;
@@ -20,7 +20,7 @@ public class PlayerUnit : MonoBehaviour
     public float reorientSpeed = 75f;
     private Quaternion targetRotation;
     
-    /*
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,9 +34,9 @@ public class PlayerUnit : MonoBehaviour
     {
         
     }
-    */
 
     Vector3 velocity;
+    Vector3 rotation;
     Vector3 estPostion;
     public float latency = 1;
     public float smoothingFactor = 10;
@@ -44,22 +44,15 @@ public class PlayerUnit : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*
         //velocity = new Vector3(0, 0, 0);
         if (!hasAuthority)
         {
             estPostion = estPostion + (velocity * Time.deltaTime);
             transform.position = estPostion;                 //Vector3.Lerp(transform.position, estPostion, (Time.deltaTime * smoothingFactor));
+            transform.eulerAngles = rotation;
             return;
         }
-
-        if (!hasAuthority)
-        {
-            estPostion = estPostion + (velocity * Time.deltaTime);
-            transform.position = estPostion;                 //Vector3.Lerp(transform.position, estPostion, (Time.deltaTime * smoothingFactor));
-            return;
-        }
-        */
+        
 
         transform.Translate(velocity * Time.deltaTime);
 
@@ -120,8 +113,6 @@ public class PlayerUnit : MonoBehaviour
     }
     void ZeroGCameraControls()
     {
-
-
         float camPitch = ySensitivity * Input.GetAxisRaw("Vertical") * Time.deltaTime; // get mouse pitch
         float camYaw = xSensitivity * Input.GetAxisRaw("Horizontal") * Time.deltaTime; // get mouse yaw
 
@@ -138,18 +129,17 @@ public class PlayerUnit : MonoBehaviour
 
         if (Vector3.Dot(this.transform.up, Vector3.down) > 0)
         {
-            playerRB.AddForce(new Vector3(0f, gravity * Time.deltaTime, 0f), ForceMode.Force);
+            Debug.Log("Before: " + playerRB.velocity);
+            playerRB.AddForce(Vector3.down * -gravity * Time.deltaTime, ForceMode.Force);
+            Debug.Log("After: " + playerRB.velocity);
         }
         else
         {
-            playerRB.AddForce(new Vector3(0f, -gravity * Time.deltaTime, 0f), ForceMode.Force);
+            Debug.Log("Before: " + playerRB.velocity);
+            playerRB.AddForce(Vector3.down * gravity * Time.deltaTime, ForceMode.Force);
+            Debug.Log("After: " + playerRB.velocity);
         }
 
-        velocity.y = playerRB.velocity.y;
-
-
-        Debug.Log("L x-axis: " + Input.GetAxisRaw("Strafe"));
-        Debug.Log("L y-axis: " + Input.GetAxisRaw("Walk"));
         float xInput = Input.GetAxisRaw("Strafe");
         float yInput = Input.GetAxisRaw("Walk");
 
@@ -174,7 +164,9 @@ public class PlayerUnit : MonoBehaviour
             OrientPlayerToCamera();
         }
 
-        //CmdUpdateVelocity(velocity, transform.position);
+        velocity += playerRB.velocity;
+
+        CmdUpdateVelocity(velocity, transform.position, transform.eulerAngles);
     }
 
     void ZeroGravControls()
@@ -215,7 +207,7 @@ public class PlayerUnit : MonoBehaviour
 
         velocity += playerRB.velocity;
 
-        //CmdUpdateVelocity(velocity, transform.position);
+        CmdUpdateVelocity(velocity, transform.position, transform.eulerAngles);
     }
 
     void OrientPlayerToCamera()
@@ -250,18 +242,19 @@ public class PlayerUnit : MonoBehaviour
                 reorient = false;
             }
     }
-    /*
+
     [Command]
-    void CmdUpdateVelocity(Vector3 v, Vector3 p)
+    void CmdUpdateVelocity(Vector3 v, Vector3 p, Vector3 r)
     {
         transform.position = p;
         velocity = v;
+        rotation = r;
 
-        RpcUpdateVelocity(velocity, transform.position);
+        RpcUpdateVelocity(velocity, transform.position, transform.eulerAngles);
     }
 
     [ClientRpc]
-    void RpcUpdateVelocity(Vector3 v, Vector3 p)
+    void RpcUpdateVelocity(Vector3 v, Vector3 p, Vector3 r)
     {
         if(hasAuthority)
         {
@@ -272,6 +265,6 @@ public class PlayerUnit : MonoBehaviour
 
         velocity = v;
         estPostion = p + (velocity * (latency));
+        rotation = r;
     }
-    */
 }
