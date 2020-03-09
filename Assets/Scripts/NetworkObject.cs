@@ -22,11 +22,14 @@ public class NetworkObject : NetworkBehaviour
         }
 
         PrevLocation = transform.position;
+        PrevRotation = transform.rotation;
     }
 
     Vector3 velocity;
     Vector3 estPostion;
     Vector3 PrevLocation;
+    Quaternion estRotation;
+    Quaternion PrevRotation;
     public float latency = 1;
     public float smoothingFactor = 10;
 
@@ -37,6 +40,9 @@ public class NetworkObject : NetworkBehaviour
         {
             estPostion = estPostion + (velocity * Time.deltaTime);
             transform.position = estPostion;                 //Vector3.Lerp(transform.position, estPostion, (Time.deltaTime * smoothingFactor));
+            
+            transform.rotation = estRotation;                 //Vector3.Lerp(transform.position, estPostion, (Time.deltaTime * smoothingFactor));
+
             return;
         }
 
@@ -47,7 +53,13 @@ public class NetworkObject : NetworkBehaviour
             CmdUpdateVelocity(velocity, transform.position);
         }
 
+        if (PrevRotation != transform.rotation)
+        {
+            CmdUpdateRotation(velocity, transform.rotation);
+        }
+
         PrevLocation = transform.position;
+        PrevRotation = transform.rotation;
     }
     
     [Command]
@@ -71,5 +83,28 @@ public class NetworkObject : NetworkBehaviour
 
         velocity = v;
         estPostion = p + (velocity * (latency));
+    }
+
+    [Command]
+    void CmdUpdateRotation(Vector3 v, Quaternion r)
+    {
+        transform.rotation = r;
+        velocity = v;
+
+        RpcUpdateRotation(velocity, transform.rotation);
+    }
+
+    [ClientRpc]
+    void RpcUpdateRotation(Vector3 v, Quaternion r)
+    {
+        if (hasAuthority)
+        {
+            return;
+        }
+
+        //transform.position = p;
+
+        velocity = v;
+        estRotation = r;
     }
 }
