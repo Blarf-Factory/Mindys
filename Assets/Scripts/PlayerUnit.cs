@@ -36,7 +36,6 @@ public class PlayerUnit : NetworkBehaviour
     }
 
     Vector3 velocity;
-    Vector3 rotation;
     Vector3 estPostion;
     public float latency = 1;
     public float smoothingFactor = 10;
@@ -49,7 +48,6 @@ public class PlayerUnit : NetworkBehaviour
         {
             estPostion = estPostion + (velocity * Time.deltaTime);
             transform.position = estPostion;                 //Vector3.Lerp(transform.position, estPostion, (Time.deltaTime * smoothingFactor));
-            transform.eulerAngles = rotation;
             return;
         }
         
@@ -164,9 +162,9 @@ public class PlayerUnit : NetworkBehaviour
             OrientPlayerToCamera();
         }
 
-        velocity += playerRB.velocity;
+        velocity = playerRB.velocity;
 
-        CmdUpdateVelocity(velocity, transform.position, transform.eulerAngles);
+        CmdUpdateVelocity(velocity, transform.position);
     }
 
     void ZeroGravControls()
@@ -207,7 +205,7 @@ public class PlayerUnit : NetworkBehaviour
 
         velocity += playerRB.velocity;
 
-        CmdUpdateVelocity(velocity, transform.position, transform.eulerAngles);
+        CmdUpdateVelocity(velocity, transform.position);
     }
 
     void OrientPlayerToCamera()
@@ -244,17 +242,17 @@ public class PlayerUnit : NetworkBehaviour
     }
 
     [Command]
-    void CmdUpdateVelocity(Vector3 v, Vector3 p, Vector3 r)
+    void CmdUpdateVelocity(Vector3 v, Vector3 p)
     {
-        transform.position = p;
-        velocity = v;
-        rotation = r;
+       // transform.position = p;
+       
+       // velocity = v;
 
-        RpcUpdateVelocity(velocity, transform.position, transform.eulerAngles);
+        RpcUpdateVelocity(velocity, transform.position);
     }
 
     [ClientRpc]
-    void RpcUpdateVelocity(Vector3 v, Vector3 p, Vector3 r)
+    void RpcUpdateVelocity(Vector3 v, Vector3 p)
     {
         if(hasAuthority)
         {
@@ -265,6 +263,5 @@ public class PlayerUnit : NetworkBehaviour
 
         velocity = v;
         estPostion = p + (velocity * (latency));
-        rotation = r;
     }
 }

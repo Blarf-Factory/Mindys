@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ingredients>
+    <ingredient>
+        <id>0</id>
+        <name>Blarf Beef</name>
+        <description>From the space cow known as Blarf</description>
+        <prefab>blarfBeefPrefab</prefab>
+        <cookable>true</cookable>
+        <cuttable>false</cuttable>
+        <cooktime>5</cooktime>
+        <burntime>3</burntime>
+    </ingredient>
+    <ingredient>
+        <id>1</id>
+        <name>Blarf Butter</name>
+        <description>Made from the milk of a blarf known as blurf</description>
+        <prefab>blarfButterPrefab</prefab>
+        <cookable>true</cookable>
+        <cuttable>false</cuttable>
+        <cooktime>4</cooktime>
+        <burntime>3</burntime>
+    </ingredient>
+    <ingredient>
+        <id>2</id>
+        <name>Carrot</name>
+        <description>From the planet Earth</description>
+        <prefab>carrotPrefab</prefab>
+        <cookable>true</cookable>
+        <cuttable>true</cuttable>
+        <cooktime>4</cooktime>
+        <burntime>3</burntime>
+    </ingredient>
+    <ingredient>
+        <id>3</id>
+        <name>Cheese</name>
+        <description>Good old space cheese</description>
+        <prefab>cheesePrefab</prefab>
+        <cookable>false</cookable>
+        <cuttable>true</cuttable>
+        <cooktime>0</cooktime>
+        <burntime>0</burntime>
+    </ingredient>
+    <ingredient>
+        <id>4</id>
+        <name>Color Spices</name>
+        <description>Mindy's special spice blend</description>
+        <prefab>coloredSpicesPrefab</prefab>
+        <cookable>false</cookable>
+        <cuttable>false</cuttable>
+        <cooktime>0</cooktime>
+        <burntime>0</burntime>
+    </ingredient>
+    <ingredient>
+        <id>5</id>
+        <name>Fish</name>
+        <description>Smells fishy...</description>
+        <prefab>fishPrefab</prefab>
+        <cookable>true</cookable>
+        <cuttable>false</cuttable>
+        <cooktime>5</cooktime>
+        <burntime>3</burntime>
+    </ingredient>
+    <ingredient>
+        <id>6</id>
+        <name>Flux Flour</name>
+        <description>A biproduct of the flux capacitor</description>
+        <prefab>fluxFlourPrefab</prefab>
+        <cookable>false</cookable>
+        <cuttable>false</cuttable>
+        <cooktime>0</cooktime>
+        <burntime>0</burntime>
+    </ingredient>
+    <ingredient>
+        <id>7</id>
+        <name>Galargfalarg</name>
+        <description>More or less radioactive chicken</description>
+        <prefab>galargfalargPrefab</prefab>
+        <cookable>true</cookable>
+        <cuttable>false</cuttable>
+        <cooktime>5</cooktime>
+        <burntime>2</burntime>
+    </ingredient>
+    <ingredient>
+        <id>8</id>
+        <name>Garlic</name>
+        <description>Might be useful against space vampires</description>
+        <prefab>garlicPrefab</prefab>
+        <cookable>false</cookable>
+        <cuttable>true</cuttable>
+        <cooktime>0</cooktime>
+        <burntime>0</burntime>
+    </ingredient>
+    <ingredient>
+        <id>9</id>
+        <name>Lettuce</name>
+        <description>Plain old earth lettuce</description>
+        <prefab>lettucePrefab</prefab>
+        <cookable>false</cookable>
+        <cuttable>true</cuttable>
+        <cooktime>0</cooktime>
+        <burntime>0</burntime>
+    </ingredient>
+    <ingredient>
+        <id>10</id>
+        <name>Mindy's Sauce</name>
+        <description>Mindy's special sauce ;)</description>
+        <prefab>mindysSaucePrefab</prefab>
+        <cookable>false</cookable>
+        <cuttable>true</cuttable>
+        <cooktime>0</cooktime>
+        <burntime>0</burntime>
+    </ingredient>
+    <ingredient>
+        <id>11</id>
+        <name>Onion</name>
+        <description>Don't get too teary</description>
+        <prefab>onionPrefab</prefab>
+        <cookable>false</cookable>
+        <cuttable>true</cuttable>
+        <cooktime>0</cooktime>
+        <burntime>0</burntime>
+    </ingredient>
+    <ingredient>
+        <id>12</id>
+        <name>Potato</name>
+        <description>Good old Earth potato</description>
+        <prefab>potatoPrefab</prefab>
+        <cookable>true</cookable>
+        <cuttable>true</cuttable>
+        <cooktime>3</cooktime>
+        <burntime>3</burntime>
+    </ingredient>
+    <ingredient>
+        <id>13</id>
+        <name>Xenomato</name>
+        <description>An alien tomato hybrid</description>
+        <prefab>xenomatoPrefab</prefab>
+        <cookable>false</cookable>
+        <cuttable>true</cuttable>
+        <cooktime>0</cooktime>
+        <burntime>0</burntime>
+    </ingredient>
+</ingredients>
