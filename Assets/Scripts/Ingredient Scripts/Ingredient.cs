@@ -5,8 +5,8 @@ using UnityEngine;
 public class Ingredient : MonoBehaviour
 {
     public string name;
-    public bool cuttable;
     public bool cookable;
+    public bool cuttable;
     public float cookTime;
     public float burnTime;
     public bool cut;
@@ -25,5 +25,14 @@ public class Ingredient : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void LoadValues(IngredientData ing)
+    {
+        this.name = ing.name;
+        this.cookable = ing.cookable;
+        this.cuttable = ing.cuttable;
+        this.cookTime = ing.cookTime;
+        this.burnTime = ing.burnTime;
     }
 }

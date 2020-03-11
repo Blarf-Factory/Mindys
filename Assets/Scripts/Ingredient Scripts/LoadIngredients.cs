@@ -4,10 +4,14 @@ using System.IO;
 using System.Xml;
 using UnityEngine;
 
+// ----- Loads XML data into the ingredient prefabs. Also generates a list of all the ingredients available to the game. -----
+
 public class LoadIngredients : MonoBehaviour
 {
     TextAsset rawXML;
     List<IngredientData> allIngredients;
+    public List<GameObject> prefabs;
+    public bool doneLoading = false;
 
     // Start is called before the first frame update
     void Start()
@@ -53,24 +57,37 @@ public class LoadIngredients : MonoBehaviour
         }
 
 
-        foreach(IngredientData ing in allIngredients)
+        foreach (IngredientData ing in allIngredients)
         {
             Debug.Log(ing.toString());
         }
 
+        foreach (IngredientData ing in allIngredients)
+        {
+            foreach (GameObject g in prefabs)
+            {
+                if (g.name == ing.prefab)
+                {
+                    g.GetComponent<Ingredient>().LoadValues(ing);
+                   // Instantiate(g, new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0));
+                }
+            }
+        }
+
+        doneLoading = true;
 
     }
 }
 public class IngredientData
 {
-    int id;
-    string name;
-    string description;
-    string prefab;
-    bool cookable;
-    bool cuttable;
-    float cookTime;
-    float burnTime;
+    public int id;
+    public string name;
+    public string description;
+    public string prefab;
+    public bool cookable;
+    public bool cuttable;
+    public float cookTime;
+    public float burnTime;
 
     public IngredientData(int id, string name, string description, string prefab, bool cookable, 
                             bool cuttable, float cookTime, float burnTime)
