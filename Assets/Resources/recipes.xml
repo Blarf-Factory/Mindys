@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<recipes>
+    <recipe>
+        <id>0</id>
+        <name>Salad</name>
+        <description>A simple and healthy food choice.</description>
+        <container>Plate</container>
+        <prefab>saladPrefab</prefab>
+        <ingredients>
+            <ingredient>
+                <name>Lettuce</name>
+                <cooklevel>raw</cooklevel>
+                <cut>true</cut>
+            </ingredient>
+            <ingredient>
+                <name>Xenomato</name>
+                <cooklevel>raw</cooklevel>
+                <cut>true</cut>
+            </ingredient>
+        </ingredients>
+    </recipe>
+</recipes>

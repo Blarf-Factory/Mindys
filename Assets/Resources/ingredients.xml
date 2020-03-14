@@ -5,6 +5,7 @@
         <name>Blarf Beef</name>
         <description>From the space cow known as Blarf</description>
         <prefab>blarfBeefPrefab</prefab>
+        <basecost>5.0</basecost>
         <cookable>true</cookable>
         <cuttable>false</cuttable>
         <cooktime>5</cooktime>
@@ -15,6 +16,7 @@
         <name>Blarf Butter</name>
         <description>Made from the milk of a blarf known as blurf</description>
         <prefab>blarfButterPrefab</prefab>
+        <basecost>5.0</basecost>
         <cookable>true</cookable>
         <cuttable>false</cuttable>
         <cooktime>4</cooktime>
@@ -25,6 +27,7 @@
         <name>Carrot</name>
         <description>From the planet Earth</description>
         <prefab>carrotPrefab</prefab>
+        <basecost>5.0</basecost>
         <cookable>true</cookable>
         <cuttable>true</cuttable>
         <cooktime>4</cooktime>
@@ -35,6 +38,7 @@
         <name>Cheese</name>
         <description>Good old space cheese</description>
         <prefab>cheesePrefab</prefab>
+        <basecost>5.0</basecost>
         <cookable>false</cookable>
         <cuttable>true</cuttable>
         <cooktime>0</cooktime>
@@ -45,6 +49,7 @@
         <name>Color Spices</name>
         <description>Mindy's special spice blend</description>
         <prefab>coloredSpicesPrefab</prefab>
+        <basecost>5.0</basecost>
         <cookable>false</cookable>
         <cuttable>false</cuttable>
         <cooktime>0</cooktime>
@@ -55,6 +60,7 @@
         <name>Fish</name>
         <description>Smells fishy...</description>
         <prefab>fishPrefab</prefab>
+        <basecost>5.0</basecost>
         <cookable>true</cookable>
         <cuttable>false</cuttable>
         <cooktime>5</cooktime>
@@ -65,6 +71,7 @@
         <name>Flux Flour</name>
         <description>A biproduct of the flux capacitor</description>
         <prefab>fluxFlourPrefab</prefab>
+        <basecost>5.0</basecost>
         <cookable>false</cookable>
         <cuttable>false</cuttable>
         <cooktime>0</cooktime>
@@ -75,6 +82,7 @@
         <name>Galargfalarg</name>
         <description>More or less radioactive chicken</description>
         <prefab>galargfalargPrefab</prefab>
+        <basecost>5.0</basecost>
         <cookable>true</cookable>
         <cuttable>false</cuttable>
         <cooktime>5</cooktime>
@@ -85,6 +93,7 @@
         <name>Garlic</name>
         <description>Might be useful against space vampires</description>
         <prefab>garlicPrefab</prefab>
+        <basecost>5.0</basecost>
         <cookable>false</cookable>
         <cuttable>true</cuttable>
         <cooktime>0</cooktime>
@@ -95,6 +104,7 @@
         <name>Lettuce</name>
         <description>Plain old earth lettuce</description>
         <prefab>lettucePrefab</prefab>
+        <basecost>5.0</basecost>
         <cookable>false</cookable>
         <cuttable>true</cuttable>
         <cooktime>0</cooktime>
@@ -105,6 +115,7 @@
         <name>Mindy's Sauce</name>
         <description>Mindy's special sauce ;)</description>
         <prefab>mindysSaucePrefab</prefab>
+        <basecost>5.0</basecost>
         <cookable>false</cookable>
         <cuttable>true</cuttable>
         <cooktime>0</cooktime>
@@ -115,6 +126,7 @@
         <name>Onion</name>
         <description>Don't get too teary</description>
         <prefab>onionPrefab</prefab>
+        <basecost>5.0</basecost>
         <cookable>false</cookable>
         <cuttable>true</cuttable>
         <cooktime>0</cooktime>
@@ -125,6 +137,7 @@
         <name>Potato</name>
         <description>Good old Earth potato</description>
         <prefab>potatoPrefab</prefab>
+        <basecost>5.0</basecost>
         <cookable>true</cookable>
         <cuttable>true</cuttable>
         <cooktime>3</cooktime>
@@ -135,6 +148,7 @@
         <name>Xenomato</name>
         <description>An alien tomato hybrid</description>
         <prefab>xenomatoPrefab</prefab>
+        <basecost>5.0</basecost>
         <cookable>false</cookable>
         <cuttable>true</cuttable>
         <cooktime>0</cooktime>
