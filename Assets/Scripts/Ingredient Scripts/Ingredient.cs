@@ -13,6 +13,9 @@ public class Ingredient : MonoBehaviour
     public bool raw;
     public bool cooked; 
     public bool burnt;
+    public List<Material> rawMat;
+    public List<Material> cookedMat;
+    public List<Material> burntMat;
 
 
     // Start is called before the first frame update
