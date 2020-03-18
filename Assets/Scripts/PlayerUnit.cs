@@ -2,9 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
 
-public class PlayerUnit : NetworkBehaviour
+public class PlayerUnit : MonoBehaviour
 {
     public GameObject cameraObj;
     public float movementSpeed = 5f;
@@ -19,21 +18,6 @@ public class PlayerUnit : NetworkBehaviour
     public bool reorient = false;
     public float reorientSpeed = 75f;
     private Quaternion targetRotation;
-    
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        if (!hasAuthority)
-        {
-            return;
-        }
-    }
-
-    private void Awake()
-    {
-        
-    }
 
     Vector3 velocity;
     Vector3 estPostion;
@@ -42,15 +26,7 @@ public class PlayerUnit : NetworkBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        //velocity = new Vector3(0, 0, 0);
-        if (!hasAuthority)
-        {
-            estPostion = estPostion + (velocity * Time.deltaTime);
-            transform.position = estPostion;                 //Vector3.Lerp(transform.position, estPostion, (Time.deltaTime * smoothingFactor));
-            return;
-        }
-        
+    {      
 
         transform.Translate(velocity * Time.deltaTime);
 
@@ -78,8 +54,6 @@ public class PlayerUnit : NetworkBehaviour
                 ZeroGCameraControls();
             }
         }
-
-        cameraObj.SetActive(true);
     }
 
 
@@ -163,8 +137,6 @@ public class PlayerUnit : NetworkBehaviour
         }
 
         velocity = playerRB.velocity;
-
-        CmdUpdateVelocity(velocity, transform.position);
     }
 
     void ZeroGravControls()
@@ -204,8 +176,6 @@ public class PlayerUnit : NetworkBehaviour
         }
 
         velocity += playerRB.velocity;
-
-        CmdUpdateVelocity(velocity, transform.position);
     }
 
     void OrientPlayerToCamera()
@@ -239,29 +209,5 @@ public class PlayerUnit : NetworkBehaviour
                 Debug.Log("Completed Orientation Change");
                 reorient = false;
             }
-    }
-
-    [Command]
-    void CmdUpdateVelocity(Vector3 v, Vector3 p)
-    {
-       // transform.position = p;
-       
-       // velocity = v;
-
-        RpcUpdateVelocity(velocity, transform.position);
-    }
-
-    [ClientRpc]
-    void RpcUpdateVelocity(Vector3 v, Vector3 p)
-    {
-        if(hasAuthority)
-        {
-            return;
-        }
-
-        //transform.position = p;
-
-        velocity = v;
-        estPostion = p + (velocity * (latency));
     }
 }
