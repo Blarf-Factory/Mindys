@@ -53,6 +53,9 @@ MonoBehaviour:
   raw: 0
   cooked: 0
   burnt: 0
+  unCutMats:
+  - {fileID: 6821291586045208083}
+  cutMats: []
   mats:
   - {fileID: 6821291586045208083}
   cooking: 0

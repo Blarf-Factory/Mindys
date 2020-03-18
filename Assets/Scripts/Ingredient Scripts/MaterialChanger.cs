@@ -7,7 +7,6 @@ public class MaterialChanger : MonoBehaviour
     public Material rawMat;
     public Material cookedMat;
     public Material burntMat;
-    Material currentMat;
     Renderer rend;
 
     // Start is called before the first frame update
@@ -28,6 +27,8 @@ public class MaterialChanger : MonoBehaviour
     public void SetCookedMat()
     {
         if (rend != null){
+            Debug.Log("is it working? YES");
+            Debug.Log(rend);
             rend.material = cookedMat;
         }
     }
