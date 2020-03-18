@@ -12,13 +12,14 @@ public class NetworkObject : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if ( !ServerObject )
+        //if ( ServerObject )
+        //{
+        //    (GetComponent<NetworkObject>() as MonoBehaviour).enabled = false;
+        //}
+        if ( !hasAuthority )
         {
-            (GetComponent<NetworkObject>() as MonoBehaviour).enabled = false;
-        }
-        else if ( !hasAuthority )
-        {
-            (GetComponent<PlayerUnit>() as MonoBehaviour).enabled = false;
+            //(GetComponent<PlayerUnit>() as MonoBehaviour).enabled = false;
+            return;
         }
 
         PrevLocation = transform.position;
@@ -55,7 +56,7 @@ public class NetworkObject : NetworkBehaviour
 
         if (PrevRotation != transform.rotation)
         {
-            CmdUpdateRotation(velocity, transform.rotation);
+            CmdUpdateRotation(transform.rotation);
         }
 
         PrevLocation = transform.position;
@@ -86,25 +87,21 @@ public class NetworkObject : NetworkBehaviour
     }
 
     [Command]
-    void CmdUpdateRotation(Vector3 v, Quaternion r)
+    void CmdUpdateRotation(Quaternion r)
     {
         transform.rotation = r;
-        velocity = v;
 
-        RpcUpdateRotation(velocity, transform.rotation);
+        RpcUpdateRotation(transform.rotation);
     }
 
     [ClientRpc]
-    void RpcUpdateRotation(Vector3 v, Quaternion r)
+    void RpcUpdateRotation(Quaternion r)
     {
         if (hasAuthority)
         {
             return;
         }
-
-        //transform.position = p;
-
-        velocity = v;
+        
         estRotation = r;
     }
 }
