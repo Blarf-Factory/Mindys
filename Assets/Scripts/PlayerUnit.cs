@@ -7,7 +7,8 @@ public class PlayerUnit : MonoBehaviour
 {
     public GameObject cameraObj;
     public float movementSpeed = 5f;
-    public float ZeroGMoveSpeed = 40f;
+    public float zeroGMoveSpeed = 40f;
+    public float rotationSpeed = 5f;
     public float xSensitivity = 5f;
     public float ySensitivity = 5f;
     public float sprintSpeed = 1.5f;
@@ -67,8 +68,14 @@ public class PlayerUnit : MonoBehaviour
         float camPitch = cameraObj.transform.localEulerAngles.x;
         float camYaw = cameraObj.transform.localEulerAngles.y;
 
+        Debug.Log("Vert Axis: " + Input.GetAxisRaw("Vertical"));
+        Debug.Log("Horz Axis: " + Input.GetAxisRaw("Horizontal"));
+
         pitch = ySensitivity * Input.GetAxisRaw("Vertical") * Time.deltaTime; // get mouse pitch
         yaw = xSensitivity * Input.GetAxisRaw("Horizontal") * Time.deltaTime; // get mouse yaw
+
+        Debug.Log("Pitch: " + pitch);
+        Debug.Log("Yaw: " + yaw);
 
         this.transform.Rotate(0f, yaw, 0f); // turns player
         cameraObj.transform.Rotate(-pitch, 0f, 0f); // moves camera up and down
@@ -121,13 +128,13 @@ public class PlayerUnit : MonoBehaviour
             {
                 modifier = sprintSpeed;
             }
-            velocity += Vector3.forward * yInput * movementSpeed * modifier;
+            transform.Translate(Vector3.forward * yInput * movementSpeed * modifier * Time.deltaTime);
 
         }
         if (xInput != 0)
         {
             
-            velocity += Vector3.right * xInput * movementSpeed;
+            transform.Translate(Vector3.right * xInput * movementSpeed * Time.deltaTime);
         }
 
         if (Input.GetButtonDown("Y"))
@@ -136,7 +143,7 @@ public class PlayerUnit : MonoBehaviour
             OrientPlayerToCamera();
         }
 
-        velocity = playerRB.velocity;
+        
     }
 
     void ZeroGravControls()
@@ -148,25 +155,25 @@ public class PlayerUnit : MonoBehaviour
 
         if (yInput != 0)
         {
-            playerRB.AddRelativeForce(new Vector3(0f, 0f, ZeroGMoveSpeed * yInput * Time.deltaTime), ForceMode.Force);
+            playerRB.AddRelativeForce(new Vector3(0f, 0f, zeroGMoveSpeed * yInput * Time.deltaTime), ForceMode.Force);
         }
 
         if (xInput != 0)
         {
-            playerRB.AddRelativeForce(new Vector3(ZeroGMoveSpeed * xInput * Time.deltaTime, 0f, 0f), ForceMode.Force);
+            playerRB.AddRelativeForce(new Vector3(zeroGMoveSpeed * xInput * Time.deltaTime, 0f, 0f), ForceMode.Force);
         }
         if (zInput != 0)
         {
-            playerRB.AddRelativeForce(new Vector3(0f, ZeroGMoveSpeed * zInput * Time.deltaTime, 0f), ForceMode.Force);
+            playerRB.AddRelativeForce(new Vector3(0f, zeroGMoveSpeed * zInput * Time.deltaTime, 0f), ForceMode.Force);
         }
 
         if (Input.GetKey(KeyCode.Q))
         {
-            this.transform.Rotate(0f, 0f, ZeroGMoveSpeed);
+            this.transform.Rotate(0f, 0f, rotationSpeed);
         }
         if (Input.GetKey(KeyCode.E))
         {
-            this.transform.Rotate(0f, 0f, -ZeroGMoveSpeed);
+            this.transform.Rotate(0f, 0f, -rotationSpeed);
         }
 
         if (Input.GetButtonDown("Y"))
@@ -174,8 +181,6 @@ public class PlayerUnit : MonoBehaviour
             magboots = true;
             reorient = true;
         }
-
-        velocity += playerRB.velocity;
     }
 
     void OrientPlayerToCamera()

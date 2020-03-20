@@ -18,11 +18,15 @@ public class Ingredient : MonoBehaviour
     public List<MaterialChanger> mats;
     public bool cooking;
     public float currentTime;
+    public GameObject wholeObj;
+    public GameObject cutObj;
+    public bool activateCut; // remove later
 
 
     // Start is called before the first frame update
     void Start()
     {
+        activateCut = false; // remove later
         cooking = false;
         raw = true;
         cooked = false;
@@ -61,14 +65,41 @@ public class Ingredient : MonoBehaviour
             }
 
         }
+
+        if (activateCut)
+        {
+            Cut();
+        }
     }
 
     public void Cut()
     {
+        if (!cuttable || cut)
+            return;
+
         cut = true;
         mats = cutMats;
         
-        // TODO: switch gameobjects
+        if (cooked)
+        {
+            foreach (MaterialChanger mat in mats)
+            {
+                mat.SetCookedMat();
+                Debug.Log("Set cooked");
+            }
+        }
+        else if (burnt)
+        {
+            foreach (MaterialChanger mat in mats)
+            {
+                mat.SetBurntMat();
+            }
+        }
+
+        wholeObj.SetActive(false);
+        cutObj.SetActive(true);
+
+        
 
     }
 
