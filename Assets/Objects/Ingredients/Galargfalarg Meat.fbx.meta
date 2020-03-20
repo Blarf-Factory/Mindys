@@ -9,7 +9,12 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: 10864_rotisserie_chicken_v2_L3
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _10864_rotisserie_chicken_v2_L303___Default
+    second: {fileID: 2100000, guid: 7d1a62c326cc1d4499a6a1ce97ac0b64, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
