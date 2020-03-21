@@ -1,16 +1,39 @@
 fileFormatVersion: 2
-guid: 3be74b3dd8f642d448600e5e83a514ac
+guid: c853ba40feccc28488c724d2f7655579
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: blarfBeef
+    100000: butter
     100002: //RootNode
-    400000: blarfBeef
+    100004: butterChopped
+    100006: geo_butter_slice1
+    100008: geo_butter_slice2
+    100010: geo_butter_slice3
+    100012: geo_butter_slice4
+    400000: butter
     400002: //RootNode
-    2100000: Mtl_blarf_beef
-    2300000: blarfBeef
-    3300000: blarfBeef
-    4300000: blarfBeef
+    400004: butterChopped
+    400006: geo_butter_slice1
+    400008: geo_butter_slice2
+    400010: geo_butter_slice3
+    400012: geo_butter_slice4
+    2100000: phong7
+    2300000: butter
+    2300002: geo_butter_slice1
+    2300004: geo_butter_slice2
+    2300006: geo_butter_slice3
+    2300008: geo_butter_slice4
+    3300000: butter
+    3300002: geo_butter_slice1
+    3300004: geo_butter_slice2
+    3300006: geo_butter_slice3
+    3300008: geo_butter_slice4
+    4300000: butter
+    4300002: geo_butter_slice1
+    4300004: geo_butter_slice2
+    4300006: geo_butter_slice3
+    4300008: geo_butter_slice4
+    9500000: //RootNode
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -63,8 +86,8 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 1
-    hasPreviousCalculatedGlobalScale: 0
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -91,7 +114,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
