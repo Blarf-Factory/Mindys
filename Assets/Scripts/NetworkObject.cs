@@ -9,9 +9,9 @@ public class NetworkObject : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (!hasAuthority)
+        if (hasAuthority == false)
         {
-            //(GetComponent<PlayerUnit>() as MonoBehaviour).enabled = false;
+            //GetComponent<PlayerUnit>().enabled = false;
             
             return;
         }
@@ -35,6 +35,7 @@ public class NetworkObject : NetworkBehaviour
         if (!hasAuthority)
         {
             camera.SetActive(false);
+            GetComponent<PlayerUnit>().enabled = false;
         }
     }
 

@@ -6,8 +6,10 @@ using UnityEngine.UI;
 
 public class NetworkUI : NetworkManager
 {
+    public GameObject NetworkGameManager;
     public void StartUpHost()
     {
+        GetComponent<Upnp>().enabled = true;
         SetPort();
         NetworkManager.singleton.StartHost();
     }
