@@ -68,14 +68,14 @@ public class PlayerUnit : MonoBehaviour
         float camPitch = cameraObj.transform.localEulerAngles.x;
         float camYaw = cameraObj.transform.localEulerAngles.y;
 
-        Debug.Log("Vert Axis: " + Input.GetAxisRaw("Vertical"));
-        Debug.Log("Horz Axis: " + Input.GetAxisRaw("Horizontal"));
+    //    Debug.Log("Vert Axis: " + Input.GetAxisRaw("Vertical"));
+    //    Debug.Log("Horz Axis: " + Input.GetAxisRaw("Horizontal"));
 
         pitch = ySensitivity * Input.GetAxisRaw("Vertical") * Time.deltaTime; // get mouse pitch
         yaw = xSensitivity * Input.GetAxisRaw("Horizontal") * Time.deltaTime; // get mouse yaw
 
-        Debug.Log("Pitch: " + pitch);
-        Debug.Log("Yaw: " + yaw);
+    //    Debug.Log("Pitch: " + pitch);
+    //    Debug.Log("Yaw: " + yaw);
 
         this.transform.Rotate(0f, yaw, 0f); // turns player
         cameraObj.transform.Rotate(-pitch, 0f, 0f); // moves camera up and down
@@ -114,9 +114,9 @@ public class PlayerUnit : MonoBehaviour
         }
         else
         {
-            Debug.Log("Before: " + playerRB.velocity);
+        //    Debug.Log("Before: " + playerRB.velocity);
             playerRB.AddForce(Vector3.down * gravity * Time.deltaTime, ForceMode.Force);
-            Debug.Log("After: " + playerRB.velocity);
+        //    Debug.Log("After: " + playerRB.velocity);
         }
 
         float xInput = Input.GetAxisRaw("Strafe");
