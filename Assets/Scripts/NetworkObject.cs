@@ -6,19 +6,13 @@ using UnityEngine.Networking;
 
 public class NetworkObject : NetworkBehaviour
 {
-
-    public GameObject ServerObject;
-
     // Start is called before the first frame update
     void Start()
     {
-        //if ( ServerObject )
-        //{
-        //    (GetComponent<NetworkObject>() as MonoBehaviour).enabled = false;
-        //}
-        if ( !hasAuthority )
+        if (!hasAuthority)
         {
             //(GetComponent<PlayerUnit>() as MonoBehaviour).enabled = false;
+            
             return;
         }
 
@@ -34,9 +28,29 @@ public class NetworkObject : NetworkBehaviour
     public float latency = 1;
     public float smoothingFactor = 10;
 
+    public GameObject camera;
+    int preupdate = 0; 
+    void PreUpdate()
+    {
+        if (!hasAuthority)
+        {
+            camera.SetActive(false);
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
+        if (preupdate == 1)
+        {
+            PreUpdate();
+            preupdate++;
+        }
+        else if(preupdate < 1)
+        {
+            preupdate++;
+        }
+
         if (!hasAuthority)
         {
             estPostion = estPostion + (velocity * Time.deltaTime);
