@@ -10,6 +10,8 @@ public class SuperSpatulaScreen : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+        //this.transform.localScale = new Vector3(0f, 1f, 1f);
+        //this.transform.position = new Vector3(-0.37f, 0f, 0f);
     }
 
     private void Update()
