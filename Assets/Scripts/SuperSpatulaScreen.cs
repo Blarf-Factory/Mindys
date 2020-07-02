@@ -6,25 +6,59 @@ public class SuperSpatulaScreen : MonoBehaviour
 {
     private Animator animator;
     private bool viewScreen = false;
+    public GameObject MainMenuObject;
+    public GameObject StartUpLogo;
+    private bool first;
+
+    private AudioSource sound;
+    public AudioClip slide;
+    public AudioClip startSound;
 
     void Start()
     {
         animator = GetComponent<Animator>();
-        //this.transform.localScale = new Vector3(0f, 1f, 1f);
-        //this.transform.position = new Vector3(-0.37f, 0f, 0f);
+        sound = GetComponent<AudioSource>();
+        first = true;
     }
 
-    private void Update()
+    public void changeScreen()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !viewScreen)
+        sound.clip = slide;
+        sound.Play();
+        if (!viewScreen)
         {
             animator.SetBool("viewScreen", true);
             viewScreen = true;
+            GameObject.Find("ScreenObject").GetComponent<Light>().enabled = true;
+            if (first)
+            {
+                StartUp();
+                first = false;
+            }
         }
-        else if (Input.GetKeyDown(KeyCode.Space) && viewScreen)
+        else if (viewScreen)
         {
+            GameObject.Find("ScreenObject").GetComponent<Light>().enabled = false;
             animator.SetBool("viewScreen", false);
             viewScreen = false;
         }
+    }
+
+    public void StartUp()
+    {
+        StartUpLogo.SetActive(true);
+        Invoke("startUpSound", 2f);
+        Invoke("OpenMainMenu", 3f);
+    }
+
+    private void OpenMainMenu()
+    {
+        MainMenuObject.SetActive(true);
+    }
+
+    public void startUpSound()
+    {
+        sound.clip = startSound;
+        sound.Play();
     }
 }

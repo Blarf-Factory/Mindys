@@ -13,6 +13,11 @@ public class MainMenuControl : MonoBehaviour
 
     private void Start()
     {
+        OpenMainMenu();
+    }
+
+    public void OpenMainMenu()
+    {
         changeUI(MainMenuUI);
     }
 
