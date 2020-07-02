@@ -159,10 +159,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1310c013b1021c468533ce57c2020c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ServerObject: {fileID: 2918422948831579844, guid: d967e52283257324ea9923da6a0d99b9,
-    type: 3}
   latency: 1
   smoothingFactor: 10
+  camera: {fileID: 8165912123516415166}
 --- !u!136 &7285343799748080664
 CapsuleCollider:
   m_ObjectHideFlags: 0

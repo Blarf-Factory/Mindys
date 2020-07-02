@@ -20,6 +20,10 @@ public class SettingsMenu : MonoBehaviour
     //CONTROL GLOBALS
 
     //MISC GLOBALS
+    public GameObject GeneralSettings;
+    public GameObject GraphicSettings;
+    public GameObject AudioSettings;
+    public GameObject ControlSettings;
 
     // Start is called before the first frame update
     void Start()
@@ -35,18 +39,29 @@ public class SettingsMenu : MonoBehaviour
         
     }
 
-/****************AUDIO**SETTINGS****************/
-/***********************************************/
+    /****************AUDIO**SETTINGS****************/
+    /***********************************************/
+    /*
+    public void setMasterVolume(float v)
+    {   
+        float m;
+        float a;
+        MusicAudio.GetFloat("MusicVolume", out m);
+        m = (m / 2) - 40;
+        SoundAudio.GetFloat("SoundVolume", out a);
+        a = (a / 2) - 40;
+        MusicAudio.SetFloat("MusicVolume", m);
+        SoundAudio.SetFloat("MusicVolume", a);
+    }*/
 
-    public void SetMasterVolume(float v)
+    public void setMusicVolume(float v)
     {
-        setVolume(v, MusicAudio);
-        setVolume(v, SoundAudio);
+        MusicAudio.SetFloat("MusicVolume", v);
     }
 
-    public void setVolume(float v, AudioMixer a)
+    public void setSoundVolume(float v)
     {
-        
+        SoundAudio.SetFloat("SoundVolume", v);
     }
 
     public void DefaultAudioSettings()
@@ -131,6 +146,16 @@ public class SettingsMenu : MonoBehaviour
         DefaultAudioSettings();
         DefaultControls();
         DefaultGraphicSettings();
+    }
+
+    public void changeSettingType(GameObject UI)
+    {
+        GeneralSettings.SetActive(false);
+        GraphicSettings.SetActive(false);
+        AudioSettings.SetActive(false);
+        ControlSettings.SetActive(false);
+        
+        UI.SetActive(true);
     }
 
     public void LoadSettings()
