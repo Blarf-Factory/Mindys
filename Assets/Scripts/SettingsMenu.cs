@@ -25,10 +25,13 @@ public class SettingsMenu : MonoBehaviour
     public GameObject AudioSettings;
     public GameObject ControlSettings;
 
+    private bool mainmenu;
+
     // Start is called before the first frame update
     void Start()
     {
         getResolutions();
+        mainmenu = (SceneManager.GetActiveScene().name == "MainMenu");
     }
 
 /***************GENERAL**SETTINGS***************/
@@ -36,11 +39,11 @@ public class SettingsMenu : MonoBehaviour
 
     public void DefaultGeneralSettings()
     {
-        
+        DefaultGraphicSettings();
     }
 
-    /****************AUDIO**SETTINGS****************/
-    /***********************************************/
+/****************AUDIO**SETTINGS****************/
+/***********************************************/
     /*
     public void setMasterVolume(float v)
     {   
@@ -165,11 +168,15 @@ public class SettingsMenu : MonoBehaviour
 
     public void SaveSettings()
     {
-        
+        Back();
     }
 
     public void Back()
     {
-        
+        if (mainmenu)
+        {
+            GameObject.Find("Main Menu").GetComponent<MainMenuControl>().OpenMainMenu();
+            this.enabled = false;
+        }
     }
 }
