@@ -79,7 +79,7 @@ public class LoadRecipes : MonoBehaviour
         
 
         foreach (RecipeData rec in allRecipes)
-        {
+        {  
             Debug.Log(rec.toString());
         }
 

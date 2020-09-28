@@ -46,11 +46,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2795ea84d56d4734bbf4d313c09bd406, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
-  cookable: 0
+  name: Blarf Beef
+  cookable: 1
   cuttable: 0
-  cookTime: 0
-  burnTime: 0
+  cookTime: 5
+  burnTime: 3
   cut: 0
   raw: 0
   cooked: 0
