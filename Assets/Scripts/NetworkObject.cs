@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
+using Mirror;
 
 public class NetworkObject : NetworkBehaviour
 {
@@ -20,6 +20,15 @@ public class NetworkObject : NetworkBehaviour
         PrevRotation = transform.rotation;
     }
 
+    public override void OnStartAuthority()
+    {
+        if (!hasAuthority)
+        {
+            camera.SetActive(false);
+            GetComponent<PlayerUnit>().enabled = false;
+        }
+    }
+
     Vector3 velocity;
     Vector3 estPostion;
     Vector3 PrevLocation;
@@ -29,36 +38,21 @@ public class NetworkObject : NetworkBehaviour
     public float smoothingFactor = 10;
 
     public GameObject camera;
-    int preupdate = 0; 
-    void PreUpdate()
-    {
-        if (!hasAuthority)
-        {
-            camera.SetActive(false);
-            GetComponent<PlayerUnit>().enabled = false;
-        }
-    }
 
     // Update is called once per frame
     void Update()
     {
-        if (preupdate == 1)
-        {
-            PreUpdate();
-            preupdate++;
-        }
-        else if(preupdate < 1)
-        {
-            preupdate++;
-        }
-
         if (!hasAuthority)
         {
+
+            camera.SetActive(false);
+            GetComponent<PlayerUnit>().enabled = false;
+            /**
             estPostion = estPostion + (velocity * Time.deltaTime);
             transform.position = estPostion;                 //Vector3.Lerp(transform.position, estPostion, (Time.deltaTime * smoothingFactor));
             
             transform.rotation = estRotation;                 //Vector3.Lerp(transform.position, estPostion, (Time.deltaTime * smoothingFactor));
-
+            */
             return;
         }
 

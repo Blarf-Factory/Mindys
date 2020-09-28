@@ -46,8 +46,7 @@ public class Upnp : MonoBehaviour
             .Unwrap()
             .ContinueWith(task =>
             {
-                return device.CreatePortMapAsync(
-                    new Mapping(Protocol.Udp, 7777, 7777, 0, "myGame Server (UDP)"));
+                return device.CreatePortMapAsync(new Mapping(Protocol.Udp, 7777, 7777, 0, "myGame Server (UDP)"));
             })
             .Unwrap()
             .ContinueWith(task =>
@@ -77,7 +76,7 @@ public class Upnp : MonoBehaviour
             .ContinueWith(task =>
             {
                 sb.AppendFormat("\n[Done]");
-                Debug.Log(sb.ToString());
+                Debug.Log(sb);
             });
     }
 }

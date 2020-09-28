@@ -1,34 +1,30 @@
-﻿using System.Collections;
+﻿using Mirror;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class StageManager : MonoBehaviour
 {
 
-    public GameObject player;
+    public PlayerUnit player;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        Invoke("SetUp", .05f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        SetUp();
-    }
 
+    }
 
     void SetUp()
     {
-        if (GameObject.Find("PlayerUnit(Clone)") != null)
+        if (GameObject.Find("PlayerConnectionObject(Clone)") == null)
         {
-            player.SetActive(false);
-        }
-        else
-        {
-            //Keep player
+            Instantiate(player);
         }
     }
 }

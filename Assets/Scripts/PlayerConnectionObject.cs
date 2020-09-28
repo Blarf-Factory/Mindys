@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
+using Mirror;
 
 public class PlayerConnectionObject : NetworkBehaviour
 {
@@ -39,7 +39,7 @@ public class PlayerConnectionObject : NetworkBehaviour
         GameObject player = Instantiate(PlayerUnit);
 
         myPlayerUnit = player;
-        NetworkServer.SpawnWithClientAuthority(player, connectionToClient);
+        NetworkServer.Spawn(player, connectionToClient);
     }
 
     [Command]

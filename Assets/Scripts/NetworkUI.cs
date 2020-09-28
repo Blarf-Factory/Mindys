@@ -1,15 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
+using Mirror;
 using UnityEngine.UI;
 
 public class NetworkUI : NetworkManager
 {
+    bool SetUpnp = false;
     public GameObject NetworkGameManager;
     public void StartUpHost()
     {
-        GetComponent<Upnp>().enabled = true;
+        if (SetUpnp) { GetComponent<Upnp>().enabled = true; }
         SetPort();
         NetworkManager.singleton.StartHost();
     }
@@ -24,12 +25,12 @@ public class NetworkUI : NetworkManager
     void SetIPAddress()
     {
         string ipAddress = GameObject.Find("InputFieldIPAddress").transform.Find("Text").GetComponent<Text>().text;
-        NetworkManager.singleton.networkAddress = ipAddress;
+        singleton.networkAddress = ipAddress;
     }
 
     void SetPort()
     {
-        NetworkManager.singleton.networkPort = 7777;
+    //    NetworkManager.singleton.networkPort = 7777;
     }
 }
 
