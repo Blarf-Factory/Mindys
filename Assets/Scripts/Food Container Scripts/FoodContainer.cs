@@ -7,8 +7,7 @@ public class FoodContainer : MonoBehaviour
     public List<GameObject> iNodes; // ingredient nodes
     public GameObject iNodesParent;
     public int iIndex;
-
-
+    public List<GameObject> nodes;
 
     void Start()
     {
