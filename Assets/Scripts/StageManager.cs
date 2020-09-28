@@ -11,7 +11,7 @@ public class StageManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Invoke("SetUp", .05f);
+        Invoke("SetUp", .1f);
     }
 
     // Update is called once per frame
