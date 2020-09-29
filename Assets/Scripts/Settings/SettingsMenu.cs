@@ -12,6 +12,7 @@ public class SettingsMenu : MonoBehaviour
     //GENERNAL GLOBALS
 
     //AUDIO GLOBALS
+    float masterAudio;
     public AudioMixer MusicAudio;
     public AudioMixer SoundAudio;
     float music;
@@ -43,23 +44,24 @@ public class SettingsMenu : MonoBehaviour
 
     public void DefaultGeneralSettings()
     {
-        DefaultGraphicSettings();
+
     }
 
 /****************AUDIO**SETTINGS****************/
 /***********************************************/
-    /*
+
     public void setMasterVolume(float v)
-    {   
+    {
+        masterAudio = v;
         float m;
         float a;
         MusicAudio.GetFloat("MusicVolume", out m);
-        m = (m / 2) - 40;
+        m = v * (m / 2) - 40;
         SoundAudio.GetFloat("SoundVolume", out a);
-        a = (a / 2) - 40;
+        a = v * (a / 2) - 40;
         MusicAudio.SetFloat("MusicVolume", m);
         SoundAudio.SetFloat("MusicVolume", a);
-    }*/
+    }
 
     public void setMusicVolume(float v)
     {
@@ -73,10 +75,23 @@ public class SettingsMenu : MonoBehaviour
         sound = v;
     }
 
+    public void setMute(bool mute)
+    {
+        if (mute)
+        {
+            AudioListener.volume = 0;
+        }
+        else
+        {
+            AudioListener.volume = 1;
+        }
+    }
+
     public void DefaultAudioSettings()
     {
         setMusicVolume(0);
         setSoundVolume(0);
+        AudioListener.volume = 1;
     }
 
 /****************CONTROL**CONFIG****************/
@@ -102,7 +117,7 @@ public class SettingsMenu : MonoBehaviour
 
     public void DefaultGraphicSettings()
     {
-        SetResolution();
+        SetHighestResolution();
         GraphicLevel(3);
         SetFullScreen(true);
     }
@@ -142,9 +157,22 @@ public class SettingsMenu : MonoBehaviour
         QualitySettings.SetQualityLevel(q);
     }
 
-    public void SetResolution()
+    public void SetHighestResolution()
     {
-        
+        resolutions = Screen.resolutions;
+        int HighestResolutionIndex = 0;
+        int HighestResolution = 0;
+        for(int i = 0; i < resolutions.Length; i++)
+        {
+            if(resolutions[i].height > HighestResolution)
+            {
+                HighestResolutionIndex = i;
+                resolutions[i].height = HighestResolution;
+            }
+        }
+        Screen.SetResolution(resolutions[HighestResolutionIndex].width, 
+                             resolutions[HighestResolutionIndex].height, 
+                             Screen.fullScreen);
     }
 
 /****************MISC***SETTINGS****************/
@@ -156,6 +184,7 @@ public class SettingsMenu : MonoBehaviour
         DefaultAudioSettings();
         DefaultControls();
         DefaultGraphicSettings();
+        SaveSettings();
     }
 
     public void changeSettingType(GameObject UI)
@@ -170,7 +199,13 @@ public class SettingsMenu : MonoBehaviour
 
     public void LoadSettings()
     {
-        
+        if (!Directory.Exists(getGameDataPath()))
+        {
+            DefaultSettings();
+        }
+        File.GetAccessControl(getGameDataPath());
+        string sb = File.ReadAllText(getGameDataPath() + "/config.txt");
+        Debug.Log(sb);
     }
 
     public void SaveSettings()
@@ -184,18 +219,18 @@ public class SettingsMenu : MonoBehaviour
 
         sb +=
             "GRAPHICS SETTINGS\n" +
-            "Fullscreen = " + Screen.fullScreen + "\n" +
-            "Resolution = " + Screen.currentResolution.width + " x " + Screen.currentResolution.height + "\n" +
+            "Fullscreen     = " + Screen.fullScreen + "\n" +
+            "Resolution     = " + Screen.currentResolution.width + " x " + Screen.currentResolution.height + "\n" +
             "Graphics Level = " + QualitySettings.GetQualityLevel() + "\n" +
             "\n";
 
         //Audio
         sb +=
             "AUDIO SETTINGS\n" +
-            //"Master Audio = " + masterAudio + "\n" +
-            "Music Audio = " + music + "\n" +
-            "Sound Audio = " + sound + "\n" +
-            //"Mute = " + mute + "\n" +
+            "Master Audio   = " + masterAudio + "\n" +
+            "Music Audio    = " + music + "\n" +
+            "Sound Audio    = " + sound + "\n" +
+            "Mute           = " + (AudioListener.volume == 0) + "\n" +
             "\n";
 
         if (!Directory.Exists(getGameDataPath()))
@@ -203,7 +238,7 @@ public class SettingsMenu : MonoBehaviour
             Directory.CreateDirectory(getGameDataPath());
         }
         File.WriteAllText(getGameDataPath() + "/config.txt", sb);
-
+        LoadSettings();
         Back();
     }
 
