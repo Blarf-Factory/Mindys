@@ -1,0 +1,245 @@
+fileFormatVersion: 2
+guid: 30d2f602540d53a4fada3190dff34766
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Armature
+    100002: Armature.002
+    100004: Armature.003
+    100006: base
+    100008: base.002
+    100010: base.003
+    100012: base.004
+    100014: base.005
+    100016: body
+    100018: Bone
+    100020: Bone 1
+    100022: Bone 2
+    100024: Bone.001
+    100026: Bone.001 1
+    100028: Bone.001 2
+    100030: Bone.002
+    100032: Bone.002 1
+    100034: Bone.002 2
+    100036: Bone.003
+    100038: Bone.003 1
+    100040: Bone.003 2
+    100042: Bone.003_end
+    100044: Bone.003_end 1
+    100046: Bone.003_end 2
+    100048: Cube.001
+    100050: Cube.002
+    100052: Flame
+    100054: hatch
+    100056: hatch_hinge
+    100058: leg_1
+    100060: leg_1.002
+    100062: leg_1.003
+    100064: leg_1.004
+    100066: leg_2
+    100068: leg_2.002
+    100070: leg_2.003
+    100072: leg_2.004
+    100074: leg_3_end
+    100076: leg_3_end.002
+    100078: leg_3_end.003
+    100080: //RootNode
+    100082: Sphere
+    100084: thruster chamber
+    400000: Armature
+    400002: Armature.002
+    400004: Armature.003
+    400006: base
+    400008: base.002
+    400010: base.003
+    400012: base.004
+    400014: base.005
+    400016: body
+    400018: Bone
+    400020: Bone 1
+    400022: Bone 2
+    400024: Bone.001
+    400026: Bone.001 1
+    400028: Bone.001 2
+    400030: Bone.002
+    400032: Bone.002 1
+    400034: Bone.002 2
+    400036: Bone.003
+    400038: Bone.003 1
+    400040: Bone.003 2
+    400042: Bone.003_end
+    400044: Bone.003_end 1
+    400046: Bone.003_end 2
+    400048: Cube.001
+    400050: Cube.002
+    400052: Flame
+    400054: hatch
+    400056: hatch_hinge
+    400058: leg_1
+    400060: leg_1.002
+    400062: leg_1.003
+    400064: leg_1.004
+    400066: leg_2
+    400068: leg_2.002
+    400070: leg_2.003
+    400072: leg_2.004
+    400074: leg_3_end
+    400076: leg_3_end.002
+    400078: leg_3_end.003
+    400080: //RootNode
+    400082: Sphere
+    400084: thruster chamber
+    2100000: Material.006
+    2100002: No Name
+    2100004: Material.007
+    2100006: Material.004
+    2100008: Material.002
+    2100010: Material.003
+    2100012: Material.001
+    2300000: base
+    2300002: base.005
+    2300004: body
+    2300006: Cube.001
+    2300008: Cube.002
+    2300010: Flame
+    2300012: hatch
+    2300014: hatch_hinge
+    2300016: leg_1.004
+    2300018: leg_2.004
+    2300020: Sphere
+    2300022: thruster chamber
+    3300000: base
+    3300002: base.005
+    3300004: body
+    3300006: Cube.001
+    3300008: Cube.002
+    3300010: Flame
+    3300012: hatch
+    3300014: hatch_hinge
+    3300016: leg_1.004
+    3300018: leg_2.004
+    3300020: Sphere
+    3300022: thruster chamber
+    4300000: base.005
+    4300002: Cube.001
+    4300004: leg_1.004
+    4300006: leg_2.004
+    4300008: Sphere
+    4300010: Cube.002
+    4300012: base
+    4300014: thruster chamber
+    4300016: body
+    4300018: Flame
+    4300020: hatch
+    4300022: hatch_hinge
+    4300024: base.004
+    4300026: leg_1
+    4300028: leg_2
+    4300030: leg_3_end
+    4300032: base.002
+    4300034: leg_1.002
+    4300036: leg_2.002
+    4300038: leg_3_end.002
+    4300040: base.003
+    4300042: leg_1.003
+    4300044: leg_2.003
+    4300046: leg_3_end.003
+    9500000: //RootNode
+    13700000: base.002
+    13700002: base.003
+    13700004: base.004
+    13700006: leg_1
+    13700008: leg_1.002
+    13700010: leg_1.003
+    13700012: leg_2
+    13700014: leg_2.002
+    13700016: leg_2.003
+    13700018: leg_3_end
+    13700020: leg_3_end.002
+    13700022: leg_3_end.003
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
