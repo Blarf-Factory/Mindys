@@ -60,7 +60,7 @@ public class SettingsMenu : MonoBehaviour
         SoundAudio.GetFloat("SoundVolume", out a);
         a = v * (a / 2) - 40;
         MusicAudio.SetFloat("MusicVolume", m);
-        SoundAudio.SetFloat("MusicVolume", a);
+        SoundAudio.SetFloat("SoundVolume", a);
     }
 
     public void setMusicVolume(float v)
@@ -224,6 +224,8 @@ public class SettingsMenu : MonoBehaviour
         setMusicVolume(int.Parse(getNext()));
         setSoundVolume(int.Parse(getNext()));
         setMute(getNext().Equals("True"));
+
+        Debug.Log("Settings Loaded");
         
         reader.Close();
         //StringReader Helper fuction
@@ -265,6 +267,7 @@ public class SettingsMenu : MonoBehaviour
             Directory.CreateDirectory(getGameDataPath());
         }
         File.WriteAllText(getGameDataPath() + "/config.txt", sb);
+        Debug.Log("Settings Saved");
         Back();
     }
 
