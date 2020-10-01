@@ -33,7 +33,7 @@ public class Grab : MonoBehaviour
     void Update()
     {
         if (Physics.SphereCast(playerCam.position, .1f, playerCam.forward, out hit, grabRange) &&
-                     (hit.collider.gameObject.CompareTag("Grabbable")))
+                     (hit.collider.gameObject.CompareTag("Grabbable") || hit.collider.gameObject.CompareTag("Grabbable Container")))
         {
             Debug.Log("Hovering over item.");
             
@@ -108,7 +108,7 @@ public class Grab : MonoBehaviour
     void Pickup(string handName)
     {
         if (Physics.SphereCast(playerCam.position, .1f, playerCam.forward, out hit, grabRange) &&
-                     hit.collider.gameObject.CompareTag("Grabbable"))
+                     (hit.collider.gameObject.CompareTag("Grabbable") || hit.collider.gameObject.CompareTag("Grabbable Container")))
         {
             GameObject hand;
             GameObject heldObj;
