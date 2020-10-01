@@ -60,7 +60,7 @@ public class SettingsMenu : MonoBehaviour
         SoundAudio.GetFloat("SoundVolume", out a);
         a = v * (a / 2) - 40;
         MusicAudio.SetFloat("MusicVolume", m);
-        SoundAudio.SetFloat("MusicVolume", a);
+        SoundAudio.SetFloat("SoundVolume", a);
     }
 
     public void setMusicVolume(float v)
@@ -89,6 +89,7 @@ public class SettingsMenu : MonoBehaviour
 
     public void DefaultAudioSettings()
     {
+        setMasterVolume(1);
         setMusicVolume(0);
         setSoundVolume(0);
         AudioListener.volume = 1;
@@ -204,8 +205,35 @@ public class SettingsMenu : MonoBehaviour
             DefaultSettings();
         }
         File.GetAccessControl(getGameDataPath());
-        string sb = File.ReadAllText(getGameDataPath() + "/config.txt");
-        Debug.Log(sb);
+        StringReader reader = new StringReader(File.ReadAllText(getGameDataPath() + "/config.txt"));
+        char[] sb = new char[20];
+        reader.ReadLine();
+        
+        reader.ReadLine();
+        //GRAPHICS SETTINGS
+        reader.ReadLine();
+        SetFullScreen(getNext().Equals("True"));
+        Screen.SetResolution(int.Parse(getNext()), int.Parse(getNext()), Screen.fullScreenMode);
+        QualitySettings.SetQualityLevel(int.Parse(getNext()));
+
+        
+        reader.ReadLine();
+        //AUDIO SETTINGS
+        reader.ReadLine();
+        setMasterVolume(int.Parse(getNext()));
+        setMusicVolume(int.Parse(getNext()));
+        setSoundVolume(int.Parse(getNext()));
+        setMute(getNext().Equals("True"));
+
+        Debug.Log("Settings Loaded");
+        
+        reader.Close();
+        //StringReader Helper fuction
+        string getNext()
+        {
+            reader.Read(sb, 0, 19);
+            return reader.ReadLine();
+        }
     }
 
     public void SaveSettings()
@@ -219,18 +247,19 @@ public class SettingsMenu : MonoBehaviour
 
         sb +=
             "GRAPHICS SETTINGS\n" +
-            "Fullscreen     = " + Screen.fullScreen + "\n" +
-            "Resolution     = " + Screen.currentResolution.width + " x " + Screen.currentResolution.height + "\n" +
-            "Graphics Level = " + QualitySettings.GetQualityLevel() + "\n" +
+            "Fullscreen        = " + Screen.fullScreen + "\n" +
+            "Resolution Height = " + Screen.currentResolution.height + "\n" +
+            "Resolution Width  = " + Screen.currentResolution.width + "\n" +
+            "Graphics Level    = " + QualitySettings.GetQualityLevel() + "\n" +
             "\n";
 
         //Audio
         sb +=
             "AUDIO SETTINGS\n" +
-            "Master Audio   = " + masterAudio + "\n" +
-            "Music Audio    = " + music + "\n" +
-            "Sound Audio    = " + sound + "\n" +
-            "Mute           = " + (AudioListener.volume == 0) + "\n" +
+            "Master Audio      = " + masterAudio + "\n" +
+            "Music Audio       = " + music + "\n" +
+            "Sound Audio       = " + sound + "\n" +
+            "Mute              = " + (AudioListener.volume == 0) + "\n" +
             "\n";
 
         if (!Directory.Exists(getGameDataPath()))
@@ -238,7 +267,7 @@ public class SettingsMenu : MonoBehaviour
             Directory.CreateDirectory(getGameDataPath());
         }
         File.WriteAllText(getGameDataPath() + "/config.txt", sb);
-        LoadSettings();
+        Debug.Log("Settings Saved");
         Back();
     }
 
