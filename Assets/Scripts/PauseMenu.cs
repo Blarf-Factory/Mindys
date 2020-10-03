@@ -2,14 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class PauseMenu : MonoBehaviour
 {
-    public GameObject Settings;
     // Start is called before the first frame update
     void Start()
     {
-        DontDestroyOnLoad(this.gameObject);
-        Settings.GetComponent<SettingsMenu>().LoadSettings();
+        
     }
 
     // Update is called once per frame

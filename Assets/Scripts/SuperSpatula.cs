@@ -7,6 +7,7 @@ public class SuperSpatula : MonoBehaviour
 {
     private GameObject screen;
     public GameObject StartAnimate;
+    public bool ownedByPlayer;
     private Animator animator;
     private bool holding = false;
     private int mode;
@@ -23,7 +24,7 @@ public class SuperSpatula : MonoBehaviour
         {
             mode = 1;
         }
-        else
+        else if(ownedByPlayer)
         {
             mode = 0;
         }
@@ -31,23 +32,37 @@ public class SuperSpatula : MonoBehaviour
         switch (mode)
         {
             case 0:
-                //Do Nothing
+                if (Input.GetKeyDown(KeyCode.Tab) && !holding)
+                {
+                    Use();
+                    Invoke("changeScreenHelper", 1f);
+                }
+                else if (Input.GetKeyDown(KeyCode.Space) && holding)
+                {
+                    changeScreenHelper();
+                    Invoke("Use", .25f);
+                }
                 break;
 
             case 1:
                 if (Input.GetKeyDown(KeyCode.Space) && !holding)
                 {
                     Use();
-                    screen.GetComponent<SuperSpatulaScreen>().Invoke("changeScreen", 1f);
+                    Invoke("changeScreenHelper", 1f);
                     //Invoke("StartUp", 1f);
                 }
                 else if (Input.GetKeyDown(KeyCode.Space) && holding)
                 {
-                    screen.GetComponent<SuperSpatulaScreen>().changeScreen();
+                    changeScreenHelper();
                     Invoke("Use", .25f);
                 }
                 break;
         }
+    }
+
+    private void changeScreenHelper()
+    {
+        screen.GetComponent<SuperSpatulaScreen>().changeScreen(ownedByPlayer);
     }
 
     public void Use()

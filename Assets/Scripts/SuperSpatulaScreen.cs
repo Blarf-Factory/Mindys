@@ -7,6 +7,7 @@ public class SuperSpatulaScreen : MonoBehaviour
     private Animator animator;
     private bool viewScreen = false;
     public GameObject MainMenuObject;
+    public GameObject PauseMenuObject;
     public GameObject StartUpLogo;
     private bool first;
 
@@ -21,7 +22,7 @@ public class SuperSpatulaScreen : MonoBehaviour
         first = true;
     }
 
-    public void changeScreen()
+    public void changeScreen(bool pause)
     {
         sound.clip = slide;
         sound.Play();
@@ -30,10 +31,13 @@ public class SuperSpatulaScreen : MonoBehaviour
             animator.SetBool("viewScreen", true);
             viewScreen = true;
             GameObject.Find("ScreenObject").GetComponent<Light>().enabled = true;
-            if (first)
+            if (first && !pause)
             {
                 StartUp();
                 first = false;
+            } else if(first && pause)
+            {
+                openPauseMenu();
             }
         }
         else if (viewScreen)
@@ -49,6 +53,11 @@ public class SuperSpatulaScreen : MonoBehaviour
         StartUpLogo.SetActive(true);
         Invoke("startUpSound", 2f);
         Invoke("OpenMainMenu", 3f);
+    }
+
+    public void openPauseMenu()
+    {
+        PauseMenuObject.SetActive(true);
     }
 
     private void OpenMainMenu()
