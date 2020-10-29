@@ -14,6 +14,7 @@ public class SuperSpatula : MonoBehaviour
     private Animator animator;
     private bool holding = false;
     private int mode;
+    private bool booted = false;
     private AudioSource sound;
     public AudioClip slide;
     public AudioClip startSound;
@@ -34,7 +35,6 @@ public class SuperSpatula : MonoBehaviour
             {
                 Use();
                 Invoke("changeScreenHelper", 1f);
-                //Invoke("StartUp", 1f);
             }
             else if (Input.GetKeyDown(KeyCode.Space) && holding)
             {
@@ -68,7 +68,11 @@ public class SuperSpatula : MonoBehaviour
             {
                 //-- MainMenu Mode --//
                 case 0:
-                    bootUp();
+                    if(!booted)
+                    {
+                        bootUp();
+                        booted = true;
+                    }
                 break;
 
                 //-- Pause Mode --//
@@ -83,7 +87,7 @@ public class SuperSpatula : MonoBehaviour
         }
     }
 
-    private void changeScreenHelper()
+    public void changeScreenHelper()
     {
         changeScreen(0);
     }
