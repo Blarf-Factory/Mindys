@@ -100,6 +100,18 @@ public class LoadRecipes : MonoBehaviour
         }
     }
 
+    public RecipeData GetRecipeByName(string name)
+    {
+        foreach (RecipeData rec in allRecipes)
+        {
+            if (rec.name == name)
+            {
+                return rec;
+            }
+        }
+        return null;
+    }
+
     public GameObject GetIngredientPrefab(string ingName)
     {
             foreach (GameObject g in prefabs)
