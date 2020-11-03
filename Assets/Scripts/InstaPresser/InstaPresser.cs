@@ -16,7 +16,7 @@ public class InstaPresser : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SelectRecipe();
+        //SelectRecipe();
     }
 
     void SelectRecipe()
@@ -29,6 +29,13 @@ public class InstaPresser : MonoBehaviour
             return;
         }
 
+        
+
         Debug.Log("Recipe: " + rec.toString());
+    }
+
+    public void AddIngredient(IngredientData ingData)
+    {
+        // pass ing data as one unit
     }
 }

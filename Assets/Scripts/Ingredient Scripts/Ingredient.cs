@@ -4,23 +4,23 @@ using UnityEngine;
 
 public class Ingredient : MonoBehaviour
 {
+
+
+
+    // Revise these to have data contained within IngredientData class
     public string name;
     public bool cookable;
     public bool cuttable;
     public float cookTime;
     public float burnTime;
-    public bool cut;
     public bool raw;
     public bool cooked; 
     public bool burnt;
-    public List<MaterialChanger> unCutMats;
-    public List<MaterialChanger> cutMats;
     public List<MaterialChanger> mats;
     public bool cooking;
     public float currentTime;
-    public GameObject wholeObj;
-    public GameObject cutObj;
-    public bool activateCut; // remove later
+    public GameObject cutPrefab;
+    public bool activateCut; // remove later  
 
 
     // Start is called before the first frame update
@@ -31,7 +31,6 @@ public class Ingredient : MonoBehaviour
         raw = true;
         cooked = false;
         burnt = false;
-        mats = unCutMats;
     }
 
     // Update is called once per frame
@@ -74,12 +73,11 @@ public class Ingredient : MonoBehaviour
 
     public void Cut()
     {
-        if (!cuttable || cut)
+        if (!cuttable)
             return;
-
-        cut = true;
-        mats = cutMats;
         
+        Instantiate(cutPrefab, this.GetComponent<Transform>().position, Quaternion.identity);
+
         if (cooked)
         {
             foreach (MaterialChanger mat in mats)
@@ -95,11 +93,6 @@ public class Ingredient : MonoBehaviour
                 mat.SetBurntMat();
             }
         }
-
-        wholeObj.SetActive(false);
-        cutObj.SetActive(true);
-
-        
 
     }
 

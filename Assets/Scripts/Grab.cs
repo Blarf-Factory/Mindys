@@ -35,8 +35,6 @@ public class Grab : MonoBehaviour
         if (Physics.SphereCast(playerCam.position, .1f, playerCam.forward, out hit, grabRange) &&
                      (hit.collider.gameObject.CompareTag("Grabbable") || hit.collider.gameObject.CompareTag("Grabbable Container")))
         {
-            Debug.Log("Hovering over item.");
-            
             // if (hit.collider.GetComponent<StorageContainerLid>())
             // {
             //     useText.text = "(Shift + Click) Open " + hit.collider.GetComponent<StorageContainerLid>().name;
@@ -165,10 +163,24 @@ public class Grab : MonoBehaviour
         }
 
         heldObj.transform.parent = null;
+
+
         if (Physics.Raycast(playerCam.position, playerCam.forward, out hit, grabRange))
         {
-            heldObj.transform.position = hit.point + hit.normal * 0.2f;
-            heldObj.transform.eulerAngles = hit.normal;
+            if (hit.collider.tag == "Intake")
+            {
+                Debug.Log("Intake Drop.");
+
+                // Drop ingredient into intake
+                Destroy(heldObj);
+
+            }
+            else
+            {
+                heldObj.transform.position = hit.point + hit.normal * 0.2f;
+                heldObj.transform.eulerAngles = hit.normal;
+            }
+            
         }
         else
         {
@@ -182,6 +194,7 @@ public class Grab : MonoBehaviour
         //  else
             heldObj.layer = 0;
         heldObj = null;
+        
         
 
     }
