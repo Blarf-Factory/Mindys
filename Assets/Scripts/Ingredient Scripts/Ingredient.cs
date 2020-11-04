@@ -7,7 +7,7 @@ public class Ingredient : MonoBehaviour
 
 
 
-    // Revise these to have data contained within IngredientData class
+    ///////////////////////////////// Revise these to have data contained within IngredientData class
     public string name;
     public bool cookable;
     public bool cuttable;
@@ -102,6 +102,5 @@ public class Ingredient : MonoBehaviour
         this.cookable = ing.cookable;
         this.cuttable = ing.cuttable;
         this.cookTime = ing.cookTime;
-        this.burnTime = ing.burnTime;
     }
 }

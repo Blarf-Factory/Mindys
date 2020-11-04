@@ -19,9 +19,11 @@ public class TestInstantiate : MonoBehaviour
         if (doOnce && GameObject.Find("IngredientLoader").GetComponent<LoadIngredients>().doneLoading)
         {
             doOnce = false;
+            float i = 0f;
             foreach (GameObject g in prefabs)
             {
-                Instantiate(g, new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0));
+                Instantiate(g, new Vector3(i, 0, 0), Quaternion.Euler(0, 0, 0));
+                i += 0.3f;
             }
         }
     }

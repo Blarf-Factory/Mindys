@@ -141,9 +141,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32e84992244026f4ea762a5b87fdee9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IntakeNode: {fileID: 1646859137}
-  OuttakeNode: {fileID: 1652634816}
-  RecipeLoader: {fileID: 0}
+  intakeNode: {fileID: 0}
+  outtakeNode: {fileID: 0}
+  recipeLoader: {fileID: 0}
 --- !u!4 &257218653
 Transform:
   m_ObjectHideFlags: 0
@@ -846,17 +846,24 @@ MonoBehaviour:
   - {fileID: 641549419270178894, guid: 8c082bf975763e7489f3a81b703f6aa3, type: 3}
   - {fileID: 4474146569741756522, guid: bffbd5814a4b8de48b6d771773ba4211, type: 3}
   - {fileID: 7213948020596833327, guid: 5eb6f28b4df555f43a4a3d86792598a1, type: 3}
+  - {fileID: 7213948020596833327, guid: 594fe45a127160849bb325ad1f9e9f10, type: 3}
   - {fileID: 2178654872104711313, guid: 0ff1ee10ff3ea1444b47d2b91ea31b9a, type: 3}
+  - {fileID: 2178654872104711313, guid: 8605e6caca8c08a449edf5eef68c826f, type: 3}
   - {fileID: 7988769461644789447, guid: 425e7c3f64f41694d8b63c07ce102a81, type: 3}
   - {fileID: 3981627803722999257, guid: 54b99308a6d0c614e91c10a3e843b86e, type: 3}
   - {fileID: 5631925174956547849, guid: af0904662f7c16f4492db36b59747761, type: 3}
   - {fileID: 7671807929024050166, guid: 52b4fe7dadb0a8849aee12442a9d9eba, type: 3}
   - {fileID: 1088302276860107376, guid: 1e1bc508cbaa62548a5bd0d3f08af988, type: 3}
+  - {fileID: 1088302276860107376, guid: 8ba609a094cd5eb4f967399681d9a59b, type: 3}
   - {fileID: 6784545083785006232, guid: 9bf147114905f84489b0423574e3d1ea, type: 3}
+  - {fileID: 6784545083785006232, guid: 66d3a4c577d00384cb88882d0f4aa0b1, type: 3}
   - {fileID: 5938534079173203715, guid: 37cd0e4be68f141488cb9e92ee7b315f, type: 3}
   - {fileID: 1612536173257251865, guid: 5d3ce2bd791d20b4081b1e1ec3fd957e, type: 3}
+  - {fileID: 1612536173257251865, guid: 312577f862f92374d833934553178c13, type: 3}
   - {fileID: 3664329176460697398, guid: 3b6aca90411f93249a4673941d7d1ebf, type: 3}
+  - {fileID: 3664329176460697398, guid: 8536c2539a5e36145a77bdf433cc24c7, type: 3}
   - {fileID: 7905396525648605542, guid: 82391bfa843d4694680631f4b6ef9e48, type: 3}
+  - {fileID: 7905396525648605542, guid: a37b4604ddc3c064cb52514f056001f9, type: 3}
   doneLoading: 0
 --- !u!4 &1180359337
 Transform:
@@ -1147,7 +1154,7 @@ GameObject:
   - component: {fileID: 1646859139}
   m_Layer: 0
   m_Name: IntakeNode
-  m_TagString: Untagged
+  m_TagString: Intake
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1566,17 +1573,24 @@ MonoBehaviour:
   - {fileID: 641549419270178894, guid: 8c082bf975763e7489f3a81b703f6aa3, type: 3}
   - {fileID: 4474146569741756522, guid: bffbd5814a4b8de48b6d771773ba4211, type: 3}
   - {fileID: 7213948020596833327, guid: 5eb6f28b4df555f43a4a3d86792598a1, type: 3}
+  - {fileID: 7213948020596833327, guid: 594fe45a127160849bb325ad1f9e9f10, type: 3}
   - {fileID: 2178654872104711313, guid: 0ff1ee10ff3ea1444b47d2b91ea31b9a, type: 3}
+  - {fileID: 2178654872104711313, guid: 8605e6caca8c08a449edf5eef68c826f, type: 3}
   - {fileID: 7988769461644789447, guid: 425e7c3f64f41694d8b63c07ce102a81, type: 3}
   - {fileID: 3981627803722999257, guid: 54b99308a6d0c614e91c10a3e843b86e, type: 3}
   - {fileID: 5631925174956547849, guid: af0904662f7c16f4492db36b59747761, type: 3}
   - {fileID: 7671807929024050166, guid: 52b4fe7dadb0a8849aee12442a9d9eba, type: 3}
   - {fileID: 1088302276860107376, guid: 1e1bc508cbaa62548a5bd0d3f08af988, type: 3}
+  - {fileID: 1088302276860107376, guid: 8ba609a094cd5eb4f967399681d9a59b, type: 3}
   - {fileID: 6784545083785006232, guid: 9bf147114905f84489b0423574e3d1ea, type: 3}
+  - {fileID: 6784545083785006232, guid: 66d3a4c577d00384cb88882d0f4aa0b1, type: 3}
   - {fileID: 5938534079173203715, guid: 37cd0e4be68f141488cb9e92ee7b315f, type: 3}
   - {fileID: 1612536173257251865, guid: 5d3ce2bd791d20b4081b1e1ec3fd957e, type: 3}
+  - {fileID: 1612536173257251865, guid: 312577f862f92374d833934553178c13, type: 3}
   - {fileID: 3664329176460697398, guid: 3b6aca90411f93249a4673941d7d1ebf, type: 3}
+  - {fileID: 3664329176460697398, guid: 8536c2539a5e36145a77bdf433cc24c7, type: 3}
   - {fileID: 7905396525648605542, guid: 82391bfa843d4694680631f4b6ef9e48, type: 3}
+  - {fileID: 7905396525648605542, guid: a37b4604ddc3c064cb52514f056001f9, type: 3}
 --- !u!4 &1959794803
 Transform:
   m_ObjectHideFlags: 0

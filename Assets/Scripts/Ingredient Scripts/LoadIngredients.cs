@@ -41,7 +41,8 @@ public class LoadIngredients : MonoBehaviour
             XmlNode nameNode = idNode.NextSibling;
             XmlNode descriptionNode = nameNode.NextSibling;
             XmlNode prefabNode = descriptionNode.NextSibling;
-            XmlNode baseCostNode = prefabNode.NextSibling;
+            XmlNode cutPrefabNode = prefabNode.NextSibling;
+            XmlNode baseCostNode = cutPrefabNode.NextSibling;
             XmlNode cookableNode = baseCostNode.NextSibling;
             XmlNode cuttableNode = cookableNode.NextSibling;
             XmlNode cookTimeNode = cuttableNode.NextSibling;
@@ -51,21 +52,22 @@ public class LoadIngredients : MonoBehaviour
             string name = nameNode.InnerXml;
             string description = descriptionNode.InnerXml;
             string prefab = prefabNode.InnerXml;
+            string cutPrefab = cutPrefabNode.InnerXml;
             float baseCost = float.Parse(baseCostNode.InnerXml);
             bool cookable = ("true" == cookableNode.InnerXml);
             bool cuttable = ("true" == cuttableNode.InnerXml);
             float cookTime = float.Parse(cookTimeNode.InnerXml);
             float burnTime = float.Parse(burnTimeNode.InnerXml);
             
-            allIngredients.Add(new IngredientData(id, name, description, prefab, baseCost, cookable, cuttable, cookTime, burnTime));
+            allIngredients.Add(new IngredientData(id, name, description, prefab, cutPrefab, baseCost, cookable, cuttable, cookTime, burnTime));
 
         }
 
 
-        // foreach (IngredientData ing in allIngredients)
-        // {
-        //     Debug.Log(ing.toString());
-        // }
+        foreach (IngredientData ing in allIngredients)
+        {
+            Debug.Log(ing.toString());
+        }
 
     }
 
@@ -96,42 +98,3 @@ public class LoadIngredients : MonoBehaviour
             return null;
         }
     }
-    
-public class IngredientData
-{
-    public int id;
-    public string name;
-    public string description;
-    public string prefab;
-    public float baseCost; 
-    public bool cookable;
-    public bool cuttable;
-    public float cookTime;
-    public float burnTime;
-
-    public IngredientData(int id, string name, string description, string prefab, float baseCost, bool cookable, 
-                            bool cuttable, float cookTime, float burnTime)
-    {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.prefab = prefab;
-        this.cookable = cookable;
-        this.cuttable = cuttable;
-        this.cookTime = cookTime;
-        this.burnTime = burnTime;
-    }
-
-        public string toString() 
-        {
-            return "-- Ingredient Data -- \n" +
-            "ID: " + id + "\n" +
-            "Name: " + name + "\n" +
-            "Description: " + description + "\n" +
-            "Prefab Name: " + prefab + "\n" +
-            "Cookable: " + cookable + "\n" +
-            "Cuttable: " + cuttable + "\n" +
-            "cookTime: " + cookTime + "\n" +
-            "burnTime: " + burnTime;
-        }
-}
