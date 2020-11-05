@@ -141,8 +141,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32e84992244026f4ea762a5b87fdee9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  intakeNode: {fileID: 0}
-  outtakeNode: {fileID: 0}
+  intakeNode: {fileID: 1646859137}
+  outtakeNode: {fileID: 1652634816}
   recipeLoader: {fileID: 0}
 --- !u!4 &257218653
 Transform:

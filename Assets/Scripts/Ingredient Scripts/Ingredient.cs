@@ -4,18 +4,12 @@ using UnityEngine;
 
 public class Ingredient : MonoBehaviour
 {
-
-
-
-    ///////////////////////////////// Revise these to have data contained within IngredientData class
-    public string name;
-    public bool cookable;
-    public bool cuttable;
-    public float cookTime;
-    public float burnTime;
+    public IngredientData data;
     public bool raw;
     public bool cooked; 
     public bool burnt;
+    public int cookLevel; // 0 - raw, 1 - cooked, 2 - burnt
+
     public List<MaterialChanger> mats;
     public bool cooking;
     public float currentTime;
@@ -28,39 +22,25 @@ public class Ingredient : MonoBehaviour
     {
         activateCut = false; // remove later
         cooking = false;
-        raw = true;
-        cooked = false;
-        burnt = false;
+        cookLevel = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!burnt && cooking)
+        if (cookLevel < 2 && cooking)
         {
             currentTime += Time.deltaTime;
 
-            if (raw && currentTime >= cookTime)
+            if (raw && currentTime >= data.cookTime)
             {
                 currentTime = 0;
-                raw = false;
-                cooked = true;
-
-                foreach (MaterialChanger mat in mats)
-                {
-                    mat.SetCookedMat();
-                }
+                Cook();
 
             }
-            else if (cooked && currentTime >= burnTime)
+            else if (cookLevel == 1 && currentTime >= data.burnTime)
             {
-
-                cooked = false;
-                burnt = true;
-                foreach (MaterialChanger mat in mats)
-                {
-                    mat.SetBurntMat();
-                }
+                Burn();
             }
 
         }
@@ -71,36 +51,45 @@ public class Ingredient : MonoBehaviour
         }
     }
 
+    public void Cook()
+    {
+        cookLevel = 1; // set cooked
+        foreach (MaterialChanger mat in mats)
+        {
+            mat.SetCookedMat();
+        }
+    }
+
+    public void Burn()
+    {
+        cookLevel = 2; // set burnt
+        foreach (MaterialChanger mat in mats)
+        {
+            mat.SetBurntMat();
+        }
+    }
+
     public void Cut()
     {
-        if (!cuttable)
+        if (!data.cuttable)
             return;
         
-        Instantiate(cutPrefab, this.GetComponent<Transform>().position, Quaternion.identity);
+        GameObject newCutPrefab = (GameObject)Instantiate(cutPrefab, this.GetComponent<Transform>().position, Quaternion.identity);
+        Ingredient newIng = newCutPrefab.GetComponent<Ingredient>();
 
-        if (cooked)
+        if (cookLevel == 1)
         {
-            foreach (MaterialChanger mat in mats)
-            {
-                mat.SetCookedMat();
-                Debug.Log("Set cooked");
-            }
+            newIng.Cook();
         }
-        else if (burnt)
+        else if (cookLevel == 2)
         {
-            foreach (MaterialChanger mat in mats)
-            {
-                mat.SetBurntMat();
-            }
+            newIng.Burn();
         }
 
     }
 
-    public void LoadValues(IngredientData ing)
+    public void LoadValues(IngredientData ing) // Load values into ingredient
     {
-        this.name = ing.name;
-        this.cookable = ing.cookable;
-        this.cuttable = ing.cuttable;
-        this.cookTime = ing.cookTime;
+        data = ing;
     }
 }

@@ -6,16 +6,15 @@
         <description>A simple and healthy food choice.</description>
         <container>Plate</container>
         <prefab>saladPrefab</prefab>
+        <price>10</price>
         <ingredients>
             <ingredient>
-                <name>Lettuce</name>
+                <name>Cut Lettuce</name>
                 <cooklevel>raw</cooklevel>
-                <cut>true</cut>
             </ingredient>
             <ingredient>
-                <name>Xenomato</name>
+                <name>Cut Xenomato</name>
                 <cooklevel>raw</cooklevel>
-                <cut>true</cut>
             </ingredient>
         </ingredients>
     </recipe>

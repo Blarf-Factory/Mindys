@@ -171,6 +171,17 @@ public class Grab : MonoBehaviour
             {
                 Debug.Log("Intake Drop.");
 
+                InstaPresser insta = hit.collider.transform.parent.GetComponent<InstaPresser>();
+                if (insta == null)
+                {
+                    Debug.Log("NULL INSTA AF");
+                }
+                IngredientData ingData = heldObj.GetComponent<Ingredient>().data;
+                if (ingData == null)
+                {
+                    Debug.Log("NULL INGDATA AF: " + ingData.toString());
+                }
+                insta.AddIngredient(ingData); // this line is awful 
                 // Drop ingredient into intake
                 Destroy(heldObj);
 
@@ -182,6 +193,7 @@ public class Grab : MonoBehaviour
             }
             
         }
+
         else
         {
             heldObj.transform.position = dropPoint.transform.position;

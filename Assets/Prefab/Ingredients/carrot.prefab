@@ -322,7 +322,7 @@ GameObject:
   - component: {fileID: 7213948020596833361}
   - component: {fileID: 7213948020596833360}
   m_Layer: 0
-  m_Name: carrotPrefab
+  m_Name: carrot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -356,23 +356,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2795ea84d56d4734bbf4d313c09bd406, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
-  cookable: 0
-  cuttable: 0
-  cookTime: 0
+  name: Carrot
+  cookable: 1
+  cuttable: 1
+  cookTime: 4
   burnTime: 0
-  cut: 0
   raw: 0
   cooked: 0
   burnt: 0
-  unCutMats:
-  - {fileID: 7435485483468714205}
-  - {fileID: 5107867958497313335}
-  cutMats:
-  - {fileID: 2889394959130744162}
   mats: []
   cooking: 0
   currentTime: 0
-  wholeObj: {fileID: 5353260736895878911}
-  cutObj: {fileID: 5353260736895878901}
+  cutPrefab: {fileID: 0}
   activateCut: 0

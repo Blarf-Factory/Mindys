@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class InstaPresser : MonoBehaviour
 {
+    [SerializeField]
+    public List<IngredientData> ingredients;
     public GameObject intakeNode;
     public GameObject outtakeNode;
     public LoadRecipes recipeLoader;
@@ -36,6 +38,6 @@ public class InstaPresser : MonoBehaviour
 
     public void AddIngredient(IngredientData ingData)
     {
-        // pass ing data as one unit
+        ingredients.Add(ingData);
     }
 }

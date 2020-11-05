@@ -5,8 +5,7 @@
         <name>Blarf</name>
         <description>From the space cow known as Blarf</description>
         <prefab>blarf</prefab>
-        <cutprefab>null</cutprefab>
-        <basecost>5</basecost>
+        <reqpaste>5.0</reqpaste>
         <cookable>true</cookable>
         <cuttable>false</cuttable>
         <cooktime>5</cooktime>
@@ -17,8 +16,7 @@
         <name>Blarf Butter</name>
         <description>Made from the milk of a blarf known as blurf</description>
         <prefab>blarfButter</prefab>
-        <cutprefab>null</cutprefab>
-        <basecost>5.0</basecost>
+        <reqpaste>5.0</reqpaste>
         <cookable>true</cookable>
         <cuttable>false</cuttable>
         <cooktime>4</cooktime>
@@ -29,8 +27,7 @@
         <name>Carrot</name>
         <description>From the planet Earth</description>
         <prefab>carrot</prefab>
-        <cutprefab>cutCarrot</cutprefab>
-        <basecost>5.0</basecost>
+        <reqpaste>5.0</reqpaste>
         <cookable>true</cookable>
         <cuttable>true</cuttable>
         <cooktime>4</cooktime>
@@ -41,8 +38,7 @@
         <name>Cut Carrot</name>
         <description>From the planet Earth</description>
         <prefab>cutCarrot</prefab>
-        <cutprefab>null</cutprefab>
-        <basecost>5.0</basecost>
+        <reqpaste>5.0</reqpaste>
         <cookable>true</cookable>
         <cuttable>false</cuttable>
         <cooktime>4</cooktime>
@@ -53,8 +49,7 @@
         <name>Cheese</name>
         <description>Good old space cheese</description>
         <prefab>cheese</prefab>
-        <cutprefab>cutCheese</cutprefab>
-        <basecost>5.0</basecost>
+        <reqpaste>5.0</reqpaste>
         <cookable>false</cookable>
         <cuttable>true</cuttable>
         <cooktime>0</cooktime>
@@ -65,8 +60,7 @@
         <name>Sliced Cheese</name>
         <description>Good old space cheese</description>
         <prefab>cutCheese</prefab>
-        <cutprefab>null</cutprefab>
-        <basecost>5.0</basecost>
+        <reqpaste>5.0</reqpaste>
         <cookable>false</cookable>
         <cuttable>false</cuttable>
         <cooktime>0</cooktime>
@@ -77,8 +71,7 @@
         <name>Color Spices</name>
         <description>Mindy's special spice blend</description>
         <prefab>coloredSpices</prefab>
-        <cutprefab>null</cutprefab>
-        <basecost>5.0</basecost>
+        <reqpaste>5.0</reqpaste>
         <cookable>false</cookable>
         <cuttable>false</cuttable>
         <cooktime>0</cooktime>
@@ -89,8 +82,7 @@
         <name>Fish</name>
         <description>Smells fishy...</description>
         <prefab>fish</prefab>
-        <cutprefab>null</cutprefab>
-        <basecost>5.0</basecost>
+        <reqpaste>5.0</reqpaste>
         <cookable>true</cookable>
         <cuttable>false</cuttable>
         <cooktime>5</cooktime>
@@ -101,8 +93,7 @@
         <name>Flux Flour</name>
         <description>A biproduct of the flux capacitor</description>
         <prefab>fluxFlour</prefab>
-        <cutprefab>null</cutprefab>
-        <basecost>5.0</basecost>
+        <reqpaste>5.0</reqpaste>
         <cookable>false</cookable>
         <cuttable>false</cuttable>
         <cooktime>0</cooktime>
@@ -113,8 +104,7 @@
         <name>Galargfalarg</name>
         <description>More or less just radioactive chicken</description>
         <prefab>galargfalarg</prefab>
-        <cutprefab>null</cutprefab>
-        <basecost>5.0</basecost>
+        <reqpaste>5.0</reqpaste>
         <cookable>true</cookable>
         <cuttable>false</cuttable>
         <cooktime>5</cooktime>
@@ -125,8 +115,7 @@
         <name>Garlic</name>
         <description>Might be useful against space vampires</description>
         <prefab>garlic</prefab>
-        <cutprefab>cutGarlic</cutprefab>
-        <basecost>5.0</basecost>
+        <reqpaste>5.0</reqpaste>
         <cookable>false</cookable>
         <cuttable>true</cuttable>
         <cooktime>0</cooktime>
@@ -136,9 +125,8 @@
         <id>11</id>
         <name>Chopped Garlic</name>
         <description>Might be useful against space vampires</description>
-        <prefab>garlic</prefab>
-        <cutprefab>null</cutprefab>
-        <basecost>5.0</basecost>
+        <prefab>cutGarlic</prefab>
+        <reqpaste>5.0</reqpaste>
         <cookable>false</cookable>
         <cuttable>true</cuttable>
         <cooktime>0</cooktime>
@@ -149,20 +137,7 @@
         <name>Lettuce</name>
         <description>Plain old earth lettuce</description>
         <prefab>lettuce</prefab>
-        <cutprefab>cutLettuce</cutprefab>
-        <basecost>5.0</basecost>
-        <cookable>false</cookable>
-        <cuttable>true</cuttable>
-        <cooktime>0</cooktime>
-        <burntime>0</burntime>
-    </ingredient>
-    <ingredient>
-        <id>12</id>
-        <name>Chopped Lettuce</name>
-        <description>Plain old earth lettuce</description>
-        <prefab>cutLettuce</prefab>
-        <cutprefab>null</cutprefab>
-        <basecost>5.0</basecost>
+        <reqpaste>5.0</reqpaste>
         <cookable>false</cookable>
         <cuttable>true</cuttable>
         <cooktime>0</cooktime>
@@ -170,83 +145,87 @@
     </ingredient>
     <ingredient>
         <id>13</id>
-        <name>Mindy's Sauce</name>
-        <description>Mindy's special sauce ;)</description>
-        <prefab>mindysSauce</prefab>
-        <cutprefab>null</cutprefab>
-        <basecost>5.0</basecost>
+        <name>Chopped Lettuce</name>
+        <description>Plain old earth lettuce</description>
+        <prefab>cutLettuce</prefab>
+        <reqpaste>5.0</reqpaste>
         <cookable>false</cookable>
-        <cuttable>false</cuttable>
+        <cuttable>true</cuttable>
         <cooktime>0</cooktime>
         <burntime>0</burntime>
     </ingredient>
     <ingredient>
         <id>14</id>
-        <name>Onion</name>
-        <description>Don't get too teary</description>
-        <prefab>onion</prefab>
-        <cutprefab>cutOnion</cutprefab>
-        <basecost>5.0</basecost>
+        <name>Mindy's Sauce</name>
+        <description>Mindy's special sauce ;)</description>
+        <prefab>mindysSauce</prefab>
+        <reqpaste>5.0</reqpaste>
         <cookable>false</cookable>
-        <cuttable>true</cuttable>
+        <cuttable>false</cuttable>
         <cooktime>0</cooktime>
         <burntime>0</burntime>
     </ingredient>
     <ingredient>
         <id>15</id>
-        <name>Chopped</name>
+        <name>Onion</name>
         <description>Don't get too teary</description>
-        <prefab>cutOnion</prefab>
-        <cutprefab>null</cutprefab>
-        <basecost>5.0</basecost>
+        <prefab>onion</prefab>
+        <reqpaste>5.0</reqpaste>
         <cookable>false</cookable>
-        <cuttable>false</cuttable>
+        <cuttable>true</cuttable>
         <cooktime>0</cooktime>
         <burntime>0</burntime>
     </ingredient>
     <ingredient>
         <id>16</id>
+        <name>Chopped Onion</name>
+        <description>Don't get too teary</description>
+        <prefab>cutOnion</prefab>
+        <reqpaste>5.0</reqpaste>
+        <cookable>false</cookable>
+        <cuttable>false</cuttable>
+        <cooktime>0</cooktime>
+        <burntime>0</burntime>
+    </ingredient>
+    <ingredient>
+        <id>17</id>
         <name>Potato</name>
         <description>Good old Earth potato</description>
         <prefab>potato</prefab>
-        <cutprefab>cutPotato</cutprefab>
-        <basecost>5.0</basecost>
+        <reqpaste>5.0</reqpaste>
         <cookable>true</cookable>
         <cuttable>true</cuttable>
         <cooktime>3</cooktime>
         <burntime>3</burntime>
     </ingredient>
     <ingredient>
-        <id>17</id>
+        <id>18</id>
         <name>Diced Potato</name>
         <description>Good old Earth potato</description>
         <prefab>cutPotato</prefab>
-        <cutprefab>null</cutprefab>
-        <basecost>5.0</basecost>
+        <reqpaste>5.0</reqpaste>
         <cookable>true</cookable>
         <cuttable>false</cuttable>
         <cooktime>3</cooktime>
         <burntime>3</burntime>
     </ingredient>
     <ingredient>
-        <id>18</id>
+        <id>19</id>
         <name>Xenomato</name>
         <description>An alien tomato hybrid</description>
         <prefab>xenomato</prefab>
-        <cutprefab>cutXenomato</cutprefab>
-        <basecost>5.0</basecost>
+        <reqpaste>5.0</reqpaste>
         <cookable>false</cookable>
         <cuttable>true</cuttable>
         <cooktime>0</cooktime>
         <burntime>0</burntime>
     </ingredient>
     <ingredient>
-        <id>19</id>
+        <id>20</id>
         <name>Sliced Xenomato</name>
         <description>An alien tomato hybrid</description>
         <prefab>cutXenomato</prefab>
-        <cutprefab>null</cutprefab>
-        <basecost>5.0</basecost>
+        <reqpaste>5.0</reqpaste>
         <cookable>false</cookable>
         <cuttable>false</cuttable>
         <cooktime>0</cooktime>

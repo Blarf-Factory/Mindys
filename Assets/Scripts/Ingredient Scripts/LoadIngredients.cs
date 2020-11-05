@@ -41,9 +41,8 @@ public class LoadIngredients : MonoBehaviour
             XmlNode nameNode = idNode.NextSibling;
             XmlNode descriptionNode = nameNode.NextSibling;
             XmlNode prefabNode = descriptionNode.NextSibling;
-            XmlNode cutPrefabNode = prefabNode.NextSibling;
-            XmlNode baseCostNode = cutPrefabNode.NextSibling;
-            XmlNode cookableNode = baseCostNode.NextSibling;
+            XmlNode reqPasteNode = prefabNode.NextSibling;
+            XmlNode cookableNode = reqPasteNode.NextSibling;
             XmlNode cuttableNode = cookableNode.NextSibling;
             XmlNode cookTimeNode = cuttableNode.NextSibling;
             XmlNode burnTimeNode = cookTimeNode.NextSibling;
@@ -52,22 +51,21 @@ public class LoadIngredients : MonoBehaviour
             string name = nameNode.InnerXml;
             string description = descriptionNode.InnerXml;
             string prefab = prefabNode.InnerXml;
-            string cutPrefab = cutPrefabNode.InnerXml;
-            float baseCost = float.Parse(baseCostNode.InnerXml);
+            float reqPaste = float.Parse(reqPasteNode.InnerXml);
             bool cookable = ("true" == cookableNode.InnerXml);
             bool cuttable = ("true" == cuttableNode.InnerXml);
             float cookTime = float.Parse(cookTimeNode.InnerXml);
             float burnTime = float.Parse(burnTimeNode.InnerXml);
             
-            allIngredients.Add(new IngredientData(id, name, description, prefab, cutPrefab, baseCost, cookable, cuttable, cookTime, burnTime));
+            allIngredients.Add(new IngredientData(id, name, description, prefab, reqPaste, cookable, cuttable, cookTime, burnTime));
 
         }
 
 
-        foreach (IngredientData ing in allIngredients)
-        {
-            Debug.Log(ing.toString());
-        }
+        // foreach (IngredientData ing in allIngredients)
+        // {
+        //     Debug.Log(ing.toString());
+        // }
 
     }
 

@@ -44,6 +44,7 @@ public class LoadRecipes : MonoBehaviour
             XmlNode descriptionNode = nameNode.NextSibling;
             XmlNode containerNode = descriptionNode.NextSibling;
             XmlNode prefabNode = containerNode.NextSibling;
+            XmlNode priceNode = prefabNode.NextSibling;
 
             string ingPathPattern = "//recipes/recipe/ingredients/ingredient";
 
@@ -55,14 +56,11 @@ public class LoadRecipes : MonoBehaviour
             {
                 XmlNode ingNameNode = ingNode.FirstChild;
                 XmlNode ingCookLevelNode = ingNameNode.NextSibling;
-                XmlNode ingCutNode = ingCookLevelNode.NextSibling;
-                
+
                 string ingName = ingNameNode.InnerXml;
                 string ingCookLevel = ingCookLevelNode.InnerXml;
-                bool ingCut = ingCutNode.InnerXml == "true";
                 
-                
-                recIngs.Add(new RecipeIngredient(ingName, ingCookLevel, ingCut));
+                recIngs.Add(new RecipeIngredient(ingName, ingCookLevel));
             }
 
 
@@ -71,8 +69,9 @@ public class LoadRecipes : MonoBehaviour
             string description = descriptionNode.InnerXml;
             string container = containerNode.InnerXml;
             string prefab = prefabNode.InnerXml;
+            float price = float.Parse(priceNode.InnerXml);
             
-            allRecipes.Add(new RecipeData(id, name, description, container, prefab, recIngs));
+            allRecipes.Add(new RecipeData(id, name, description, container, prefab, price, recIngs));
 
         }
 
@@ -124,59 +123,4 @@ public class LoadRecipes : MonoBehaviour
             return null;
         }
     }
-public class RecipeData
-{
-    public int id;
-    public string name;
-    public string description;
-    public string container;
-    public string prefab;
-    public List<RecipeIngredient> ingredients;
 
-    public RecipeData(int id, string name, string description, string container, string prefab, List<RecipeIngredient> ingredients)
-    {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.container = container;
-        this.prefab = prefab;
-        this.ingredients = ingredients;
-        
-
-    }
-
-        public string toString() 
-        {
-            string s = "-- Ingredient Data -- \n" +
-            "ID: " + id + "\n" +
-            "Name: " + name + "\n" +
-            "Description: " + description + "\n" +
-            "Container Name: " + container + "\n" +
-            "Prefab Name: " + prefab + "\n";
-            
-            foreach (RecipeIngredient ing in ingredients)
-            {
-                s += "Ingredient Name: " + ing.name + "\n";
-                s += "Cook Level: " + ing.cookLevel + "\n";
-                s += "Cut: " + ing.cut + "\n";
-            }
-
-            return s;
-        }
-
-    
-}
-
-public class RecipeIngredient
-{
-    public string name;
-    public string cookLevel;
-    public bool cut;
-
-    public RecipeIngredient(string name, string cookLevel, bool cut)
-    {
-        this.name = name;
-        this.cookLevel = cookLevel;
-        this.cut = cut;
-    }
-}
