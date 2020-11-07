@@ -58,7 +58,7 @@ public class LoadRecipes : MonoBehaviour
                 XmlNode ingCookLevelNode = ingNameNode.NextSibling;
 
                 string ingName = ingNameNode.InnerXml;
-                string ingCookLevel = ingCookLevelNode.InnerXml;
+                int ingCookLevel = int.Parse(ingCookLevelNode.InnerXml);
                 
                 recIngs.Add(new RecipeIngredient(ingName, ingCookLevel));
             }

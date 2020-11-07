@@ -25,6 +25,7 @@ public class LoadIngredients : MonoBehaviour
         LoadIngredientValues();
 
         doneLoading = true;
+        GameObject.Find("TestInstantiator").GetComponent<TestInstantiate>().InstantiateIngredients(prefabs);
     }
 
     // Update is called once per frame
@@ -46,6 +47,7 @@ public class LoadIngredients : MonoBehaviour
             XmlNode cuttableNode = cookableNode.NextSibling;
             XmlNode cookTimeNode = cuttableNode.NextSibling;
             XmlNode burnTimeNode = cookTimeNode.NextSibling;
+            XmlNode cookLevelNode = burnTimeNode.NextSibling;
 
             int id = int.Parse(idNode.InnerXml);
             string name = nameNode.InnerXml;
@@ -56,8 +58,9 @@ public class LoadIngredients : MonoBehaviour
             bool cuttable = ("true" == cuttableNode.InnerXml);
             float cookTime = float.Parse(cookTimeNode.InnerXml);
             float burnTime = float.Parse(burnTimeNode.InnerXml);
+            int cookLevel = int.Parse(cookLevelNode.InnerXml);
             
-            allIngredients.Add(new IngredientData(id, name, description, prefab, reqPaste, cookable, cuttable, cookTime, burnTime));
+            allIngredients.Add(new IngredientData(id, name, description, prefab, reqPaste, cookable, cuttable, cookTime, burnTime, cookLevel));
 
         }
 
@@ -77,11 +80,24 @@ public class LoadIngredients : MonoBehaviour
             {
                 if (g.name == ing.prefab)
                 {
+                    Debug.Log(ing.toString());
                     g.GetComponent<Ingredient>().LoadValues(ing);
                     break;
                 }
             }
         }
+    }
+
+    public IngredientData GetIngDataByName(string name)
+    {
+        foreach (IngredientData ingD in allIngredients)
+        {
+            if (name == ingD.name)
+            {
+                return ingD;
+            }
+        }
+        return null;
     }
 
     public GameObject GetIngredientPrefab(string ingName)

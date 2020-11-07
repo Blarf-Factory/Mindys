@@ -38,7 +38,6 @@ public class RecipeData
             {
                 s += "Ingredient Name: " + ing.name + "\n";
                 s += "Cook Level: " + ing.cookLevel + "\n";
-                s += "Cut: " + ing.cut + "\n";
             }
 
             return s;

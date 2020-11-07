@@ -10,11 +10,29 @@
         <ingredients>
             <ingredient>
                 <name>Cut Lettuce</name>
-                <cooklevel>raw</cooklevel>
+                <cooklevel>0</cooklevel>
             </ingredient>
             <ingredient>
                 <name>Cut Xenomato</name>
-                <cooklevel>raw</cooklevel>
+                <cooklevel>0</cooklevel>
+            </ingredient>
+        </ingredients>
+    </recipe>
+    <recipe>
+        <id>1</id>
+        <name>Double Blarf</name>
+        <description>That's a lot of blarf</description>
+        <container>Plate</container>
+        <prefab>doubleBlarf</prefab>
+        <price>10</price>
+        <ingredients>
+            <ingredient>
+                <name>Blarf</name>
+                <cooklevel>0</cooklevel>
+            </ingredient>
+            <ingredient>
+                <name>Blarf</name>
+                <cooklevel>0</cooklevel>
             </ingredient>
         </ingredients>
     </recipe>

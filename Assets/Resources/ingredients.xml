@@ -10,6 +10,7 @@
         <cuttable>false</cuttable>
         <cooktime>5</cooktime>
         <burntime>4</burntime>
+        <cooklevel>0</cooklevel>
     </ingredient>
     <ingredient>
         <id>1</id>
@@ -21,6 +22,7 @@
         <cuttable>false</cuttable>
         <cooktime>4</cooktime>
         <burntime>2</burntime>
+        <cooklevel>0</cooklevel>
     </ingredient>
     <ingredient>
         <id>2</id>
@@ -32,6 +34,7 @@
         <cuttable>true</cuttable>
         <cooktime>4</cooktime>
         <burntime>4</burntime>
+        <cooklevel>0</cooklevel>
     </ingredient>
     <ingredient>
         <id>3</id>
@@ -43,6 +46,7 @@
         <cuttable>false</cuttable>
         <cooktime>4</cooktime>
         <burntime>4</burntime>
+        <cooklevel>0</cooklevel>
     </ingredient>
     <ingredient>
         <id>4</id>
@@ -54,6 +58,7 @@
         <cuttable>true</cuttable>
         <cooktime>0</cooktime>
         <burntime>0</burntime>
+        <cooklevel>0</cooklevel>
     </ingredient>
     <ingredient>
         <id>5</id>
@@ -65,6 +70,7 @@
         <cuttable>false</cuttable>
         <cooktime>0</cooktime>
         <burntime>0</burntime>
+        <cooklevel>0</cooklevel>
     </ingredient>
     <ingredient>
         <id>6</id>
@@ -76,6 +82,7 @@
         <cuttable>false</cuttable>
         <cooktime>0</cooktime>
         <burntime>0</burntime>
+        <cooklevel>0</cooklevel>
     </ingredient>
     <ingredient>
         <id>7</id>
@@ -87,6 +94,7 @@
         <cuttable>false</cuttable>
         <cooktime>5</cooktime>
         <burntime>4</burntime>
+        <cooklevel>0</cooklevel>
     </ingredient>
     <ingredient>
         <id>8</id>
@@ -98,6 +106,7 @@
         <cuttable>false</cuttable>
         <cooktime>0</cooktime>
         <burntime>0</burntime>
+        <cooklevel>0</cooklevel>
     </ingredient>
     <ingredient>
         <id>9</id>
@@ -109,6 +118,7 @@
         <cuttable>false</cuttable>
         <cooktime>5</cooktime>
         <burntime>3</burntime>
+        <cooklevel>0</cooklevel>
     </ingredient>
     <ingredient>
         <id>10</id>
@@ -120,6 +130,7 @@
         <cuttable>true</cuttable>
         <cooktime>0</cooktime>
         <burntime>0</burntime>
+        <cooklevel>0</cooklevel>
     </ingredient>
     <ingredient>
         <id>11</id>
@@ -131,6 +142,7 @@
         <cuttable>true</cuttable>
         <cooktime>0</cooktime>
         <burntime>0</burntime>
+        <cooklevel>0</cooklevel>
     </ingredient>
     <ingredient>
         <id>12</id>
@@ -142,6 +154,7 @@
         <cuttable>true</cuttable>
         <cooktime>0</cooktime>
         <burntime>0</burntime>
+        <cooklevel>0</cooklevel>
     </ingredient>
     <ingredient>
         <id>13</id>
@@ -153,6 +166,7 @@
         <cuttable>true</cuttable>
         <cooktime>0</cooktime>
         <burntime>0</burntime>
+        <cooklevel>0</cooklevel>
     </ingredient>
     <ingredient>
         <id>14</id>
@@ -164,6 +178,7 @@
         <cuttable>false</cuttable>
         <cooktime>0</cooktime>
         <burntime>0</burntime>
+        <cooklevel>0</cooklevel>
     </ingredient>
     <ingredient>
         <id>15</id>
@@ -175,6 +190,7 @@
         <cuttable>true</cuttable>
         <cooktime>0</cooktime>
         <burntime>0</burntime>
+        <cooklevel>0</cooklevel>
     </ingredient>
     <ingredient>
         <id>16</id>
@@ -186,6 +202,7 @@
         <cuttable>false</cuttable>
         <cooktime>0</cooktime>
         <burntime>0</burntime>
+        <cooklevel>0</cooklevel>
     </ingredient>
     <ingredient>
         <id>17</id>
@@ -197,6 +214,7 @@
         <cuttable>true</cuttable>
         <cooktime>3</cooktime>
         <burntime>3</burntime>
+        <cooklevel>0</cooklevel>
     </ingredient>
     <ingredient>
         <id>18</id>
@@ -208,6 +226,7 @@
         <cuttable>false</cuttable>
         <cooktime>3</cooktime>
         <burntime>3</burntime>
+        <cooklevel>0</cooklevel>
     </ingredient>
     <ingredient>
         <id>19</id>
@@ -219,6 +238,7 @@
         <cuttable>true</cuttable>
         <cooktime>0</cooktime>
         <burntime>0</burntime>
+        <cooklevel>0</cooklevel>
     </ingredient>
     <ingredient>
         <id>20</id>
@@ -230,5 +250,6 @@
         <cuttable>false</cuttable>
         <cooktime>0</cooktime>
         <burntime>0</burntime>
+        <cooklevel>0</cooklevel>
     </ingredient>
 </ingredients>

@@ -174,12 +174,12 @@ public class Grab : MonoBehaviour
                 InstaPresser insta = hit.collider.transform.parent.GetComponent<InstaPresser>();
                 if (insta == null)
                 {
-                    Debug.Log("NULL INSTA AF");
+                    Debug.Log("Instapresser not found...");
                 }
                 IngredientData ingData = heldObj.GetComponent<Ingredient>().data;
                 if (ingData == null)
                 {
-                    Debug.Log("NULL INGDATA AF: " + ingData.toString());
+                    Debug.Log("Ingredient data null.");
                 }
                 insta.AddIngredient(ingData); // this line is awful 
                 // Drop ingredient into intake

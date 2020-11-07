@@ -5,10 +5,9 @@ using UnityEngine;
 public class RecipeIngredient
 {
     public string name;
-    public string cookLevel;
-    public bool cut;
+    public int cookLevel;
 
-    public RecipeIngredient(string name, string cookLevel)
+    public RecipeIngredient(string name, int cookLevel)
     {
         this.name = name;
         this.cookLevel = cookLevel;

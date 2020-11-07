@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class IngredientData
 {
     public int id;
@@ -13,9 +14,10 @@ public class IngredientData
     public bool cuttable;
     public float cookTime;
     public float burnTime;
+    public int cookLevel;
 
     public IngredientData(int id, string name, string description, string prefab, float baseCost, bool cookable, 
-                            bool cuttable, float cookTime, float burnTime)
+                            bool cuttable, float cookTime, float burnTime, int cookLevel)
     {
         this.id = id;
         this.name = name;
@@ -25,7 +27,9 @@ public class IngredientData
         this.cuttable = cuttable;
         this.cookTime = cookTime;
         this.burnTime = burnTime;
+        this.cookLevel = cookLevel;
     }
+
 
         public string toString() 
         {
@@ -37,6 +41,12 @@ public class IngredientData
             "Cookable: " + cookable + "\n" +
             "Cuttable: " + cuttable + "\n" +
             "Cook Time: " + cookTime + "\n" +
-            "Burn Time: " + burnTime;
+            "Burn Time: " + burnTime + "\n" +
+            "Cook Level: " + cookLevel;
+        }
+
+        public RecipeIngredient ConvertToRecIng(IngredientData ingD)
+        {
+            return new RecipeIngredient(ingD.name, ingD.cookLevel);
         }
 }
