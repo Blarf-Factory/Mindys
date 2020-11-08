@@ -48,7 +48,8 @@ public class LoadRecipes : MonoBehaviour
 
             string ingPathPattern = "//recipes/recipe/ingredients/ingredient";
 
-            XmlNodeList ingNodeList = doc.SelectNodes(ingPathPattern);
+         //   XmlNodeList ingNodeList = doc.SelectNodes(ingPathPattern);
+            XmlNodeList ingNodeList = priceNode.NextSibling.ChildNodes;
 
             List<RecipeIngredient> recIngs = new List<RecipeIngredient>();
 

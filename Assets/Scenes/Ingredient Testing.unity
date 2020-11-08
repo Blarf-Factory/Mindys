@@ -142,9 +142,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ingredients: []
+  ingsRemaining: []
+  ingsCompleted: []
+  recipeIngredients: []
+  score: 0
   intakeNode: {fileID: 1646859137}
   outtakeNode: {fileID: 1652634816}
   recipeLoader: {fileID: 0}
+  finishedDish: {fileID: 1207111908571294327, guid: 6c50eb95d0b5701428daf7d1a8ed19db,
+    type: 3}
 --- !u!4 &257218653
 Transform:
   m_ObjectHideFlags: 0
