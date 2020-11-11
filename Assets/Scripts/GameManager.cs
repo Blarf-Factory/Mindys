@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public GameObject GameData;
     public GameObject Settings;
     public PlayerUnit player;
     // Start is called before the first frame update
