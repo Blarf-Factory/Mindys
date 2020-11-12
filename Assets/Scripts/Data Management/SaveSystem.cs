@@ -44,7 +44,7 @@ public static class SaveSystem
         #if UNITY_STANDALONE_WIN
             gameDataPath =
             Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments).Replace("\\", "/");
-            gameDataPath += "/My Games/Mindys/";
+            gameDataPath += "/My Games/Mindys/Saves";
         #else
             savedGamesPath = Application.persistentDataPath + "/";
         #endif

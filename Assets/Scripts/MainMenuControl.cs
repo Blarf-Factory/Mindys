@@ -7,6 +7,7 @@ public class MainMenuControl : MonoBehaviour
 {
     public GameObject MainMenuUI;
     public GameObject GameModeUI;
+    public GameObject LoadGameUI;
     public GameObject NetworkUI;
     public GameObject CustomizationUI;
     public GameObject SettingsUI;
@@ -25,6 +26,7 @@ public class MainMenuControl : MonoBehaviour
     {
         MainMenuUI.SetActive(false);
         GameModeUI.SetActive(false);
+        LoadGameUI.SetActive(false);
         NetworkUI.SetActive(false);
         CustomizationUI.SetActive(false);
         SettingsUI.SetActive(false);
@@ -39,11 +41,6 @@ public class MainMenuControl : MonoBehaviour
     public void newGame()
     {
         SceneManager.LoadScene("Test_Stage");
-    }
-
-    public void continueGame()
-    {
-        //    LoadGameUI.SetActive(true);
     }
 
     public void tutorial()
