@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class LoadGameUI : MonoBehaviour
 {
-    private GameObject selectedSave;
+    public GameObject selectedSave;
     // Start is called before the first frame update
     void Start()
     {
