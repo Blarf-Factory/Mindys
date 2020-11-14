@@ -9,7 +9,7 @@ public static class SaveSystem
 {
   public static void SaveGame(GameData saveData)
   {
-    FileStream dataStream = new FileStream(getGameDataPath() + "/" + saveData.crewname + ".blurf", FileMode.Create);
+    FileStream dataStream = new FileStream(getGameDataPath() + "/" + saveData.crewname + ".blarf", FileMode.Create);
 
     BinaryFormatter converter = new BinaryFormatter();
     converter.Serialize(dataStream, saveData);
@@ -17,23 +17,23 @@ public static class SaveSystem
     dataStream.Close();
   }
 
-  public static GameData LoadGame(GameData saveData)
+  public static GameData LoadGame(string saveData)
   {
-    if(File.Exists(getGameDataPath() + "/" + saveData.crewname + ".blurf"))
+    if(File.Exists(getGameDataPath() + "/" + saveData + ".blarf"))
     {
       // File exists 
-      FileStream dataStream = new FileStream(getGameDataPath() + "/" + saveData.crewname + ".blurf", FileMode.Open);
+      FileStream dataStream = new FileStream(getGameDataPath() + "/" + saveData + ".blarf", FileMode.Open);
 
       BinaryFormatter converter = new BinaryFormatter();
-      saveData = converter.Deserialize(dataStream) as GameData;
+      GameData Data = converter.Deserialize(dataStream) as GameData;
 
       dataStream.Close();
-      return saveData;
+      return Data;
     }
     else
     {
     // File does not exist
-    Debug.LogError("Save file not found in " + getGameDataPath() + "/" + saveData.crewname + ".blurf");
+    Debug.LogError("Save file not found in " + getGameDataPath() + "/" + saveData + ".blarf");
     return null;
     }
   }
