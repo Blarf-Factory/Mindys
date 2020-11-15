@@ -6,9 +6,7 @@ using UnityEngine.UI;
 public class GameSavePreview : MonoBehaviour
 {
     
-        float r;
-        float g;
-        float b;
+        float r, g, b;
     void Start()
     {
         r = GetComponent<Image>().color.r;
@@ -23,7 +21,7 @@ public class GameSavePreview : MonoBehaviour
         }
         else
         {
-            GetComponent<Image>().color = new Color(r, g, b, 0.5f);
+            GetComponent<Image>().color = new Color(r, g, b, 0.35f);
         }
     }
     public void SelectSaveDataHelper()

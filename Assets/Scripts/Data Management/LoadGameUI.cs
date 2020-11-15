@@ -20,7 +20,7 @@ public class LoadGameUI : MonoBehaviour
 
     public void StartFromSave()
     {
-        //GameData data = SaveSystem.LoadGame(selectedSave.GetComponentsInChildren<Text>()[0].text);
+        GameObject.Find("GlobalData").GetComponent<GlobalData>().Data = SaveSystem.LoadGame(selectedSave.GetComponentsInChildren<Text>()[0].text);
         Debug.Log(selectedSave.GetComponentsInChildren<Text>()[0].text);
     }
 
