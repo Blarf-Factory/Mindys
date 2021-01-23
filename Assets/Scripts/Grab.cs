@@ -6,16 +6,13 @@ using UnityEngine.UI;
 public class Grab : MonoBehaviour
 {
     public GameObject player;
-    public GameObject leftHand;
     public GameObject rightHand;
     public GameObject dropPoint;
-    public GameObject leftHandObj;
     public GameObject rightHandObj;
     public Transform playerTransform;
     public Transform playerCam;
     public float throwStrength = 5f;
     private float grabRange = 2.5f;
-    public bool leftHandIsFree = true;
     public bool rightHandIsFree = true;
     private RaycastHit hit;
     public Text useText;
@@ -23,9 +20,7 @@ public class Grab : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        leftHandObj = null;
         rightHandObj = null;
-        leftHandIsFree = true;
         rightHandIsFree = true;
     }
 
@@ -51,28 +46,15 @@ public class Grab : MonoBehaviour
         // else
         //     useText.text = " ";
 
-
         if (Input.GetMouseButtonDown(0)) // && !Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.R))
-        {
-            if (leftHandIsFree)
-            {
-                Pickup("left");
-            }
-            else
-            {
-                Drop("left");
-            }
-        }
-
-        if (Input.GetMouseButtonDown(1)) // && !Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.R))
         {
             if (rightHandIsFree)
             {
-                Pickup("right");
+                Pickup();
             }
             else
             {
-                Drop("right");
+                Drop();
             }
         }
 
@@ -103,7 +85,7 @@ public class Grab : MonoBehaviour
         // }
     }
 
-    void Pickup(string handName)
+    void Pickup()
     {
         if (Physics.SphereCast(playerCam.position, .1f, playerCam.forward, out hit, grabRange) &&
                      (hit.collider.gameObject.CompareTag("Grabbable") || hit.collider.gameObject.CompareTag("Grabbable Container")))
@@ -111,20 +93,10 @@ public class Grab : MonoBehaviour
             GameObject hand;
             GameObject heldObj;
 
-            if (handName == "left")
-            {
-                hand = leftHand;
-                heldObj = leftHandObj;
-                leftHandIsFree = false;
-                Debug.Log("LEFT");
-            }
-            else
-            {
-                hand = rightHand;
-                heldObj = rightHandObj;
-                rightHandIsFree = false;
-                Debug.Log("RIGHT");
-            }
+            hand = rightHand;
+            heldObj = rightHandObj;
+            rightHandIsFree = false;
+            Debug.Log(hit.transform.gameObject.name + " Picked Up");
 
             hit.collider.gameObject.layer = 10;
 
@@ -136,31 +108,16 @@ public class Grab : MonoBehaviour
             hit.collider.gameObject.GetComponent<Rigidbody>().useGravity = false;
             hit.collider.gameObject.GetComponent<Rigidbody>().isKinematic = true;
 
-            if (handName == "left")
-            {
-                leftHandObj = heldObj;
-            }
-            else
-            {
-                rightHandObj = heldObj;
-            }
+            rightHandObj = heldObj;
         }
     }
 
-    void Drop(string handName)
+    void Drop()
     {
         GameObject heldObj;
 
-        if (handName == "left")
-        {
-            heldObj = leftHandObj;
-            leftHandIsFree = true;
-        }
-        else
-        {
-            heldObj = rightHandObj;
-            rightHandIsFree = true;
-        }
+        heldObj = rightHandObj;
+        rightHandIsFree = true;
 
         heldObj.transform.parent = null;
 

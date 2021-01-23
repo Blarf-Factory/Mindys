@@ -1883,6 +1883,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: LocalPlayerUnit Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 6422124755839253334, guid: e1429af6749c973488c757f6dbd4cb7b,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6422124755839253334, guid: e1429af6749c973488c757f6dbd4cb7b,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6422124755839253334, guid: e1429af6749c973488c757f6dbd4cb7b,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6993795346708738952, guid: e1429af6749c973488c757f6dbd4cb7b,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6993795346708738952, guid: e1429af6749c973488c757f6dbd4cb7b,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1429af6749c973488c757f6dbd4cb7b, type: 3}
 --- !u!1001 &1779776239
