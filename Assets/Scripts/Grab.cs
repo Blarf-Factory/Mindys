@@ -28,25 +28,38 @@ public class Grab : MonoBehaviour
     void Update()
     {
         if (Physics.SphereCast(playerCam.position, .1f, playerCam.forward, out hit, grabRange) &&
-                     (hit.collider.gameObject.CompareTag("Grabbable") || hit.collider.gameObject.CompareTag("Grabbable Container")))
+                     (hit.collider.gameObject.CompareTag("Grabbable") || hit.collider.gameObject.CompareTag("Placeable Surface")))
         {
-            // if (hit.collider.GetComponent<StorageContainerLid>())
-            // {
-            //     useText.text = "(Shift + Click) Open " + hit.collider.GetComponent<StorageContainerLid>().name;
-            // }
-            // else if (hit.collider.GetComponent<FoodContainer>())
-            // {
-            //     useText.text = "(Click) Pickup " + hit.collider.gameObject.name + "\n" + " (Shift + Click) Add Ingredient";
-            // }
-            // else
-            // {
-            //     useText.text = "(Click) Pickup " + hit.collider.gameObject.name;
-            // }
+            GameObject hitObj = hit.collider.gameObject;
+            if (hitObj.CompareTag("Grabbable"))
+            {
+                if (rightHandIsFree)
+                {
+                    useText.text = "Pickup " + hit.collider.gameObject.name + " (LMB)";
+                }
+                else
+                {
+                    useText.text = " ";
+                }
+            }
+            else if (hitObj.CompareTag("Placeable Surface"))
+            {
+                if (!rightHandIsFree)
+                {
+                    useText.text = "Place " + rightHandObj.name + " into " + hit.collider.gameObject.name + " (LMB)";
+                }
+                else
+                {
+                    useText.text = "Need Item";
+                }
+                
+            }
+            
         }
-        // else
-        //     useText.text = " ";
+        else
+             useText.text = " ";
 
-        if (Input.GetMouseButtonDown(0)) // && !Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.R))
+        if (Input.GetMouseButtonDown(0))
         {
             if (rightHandIsFree)
             {
@@ -58,31 +71,6 @@ public class Grab : MonoBehaviour
             }
         }
 
-        // if (Input.GetMouseButtonDown(0) && Input.GetKey(KeyCode.R))
-        // {
-        //     if (!leftHandIsFree)
-        //     {
-        //         Throw("left");
-        //     }
-        // }
-
-        // if (Input.GetMouseButtonDown(1) && Input.GetKey(KeyCode.R))
-        // {
-        //     if (!rightHandIsFree)
-        //     {
-        //         Throw("right");
-        //     }
-        // }
-
-
-        // if (Input.GetMouseButtonDown(0) && Input.GetKey(KeyCode.LeftShift))
-        // {
-        //     HandUse(leftHandObj);
-        // }
-        // if (Input.GetMouseButtonDown(1) && Input.GetKey(KeyCode.LeftShift))
-        // {
-        //     HandUse(rightHandObj);
-        // }
     }
 
     void Pickup()
@@ -155,13 +143,14 @@ public class Grab : MonoBehaviour
         {
             heldObj.transform.position = dropPoint.transform.position;
         }
-        heldObj.GetComponent<Rigidbody>().isKinematic = false;
-        heldObj.GetComponent<Rigidbody>().velocity = player.GetComponent<Rigidbody>().velocity;
-        heldObj.GetComponent<Rigidbody>().angularVelocity = player.GetComponent<Rigidbody>().angularVelocity;
-        //  if (leftHandObj.GetComponent<FoodContainer>())
-        //      leftHandObj.layer = 13;
-        //  else
-            heldObj.layer = 0;
+        Rigidbody heldObjRB = heldObj.GetComponent<Rigidbody>();
+        Rigidbody playerRB = player.GetComponent<Rigidbody>();
+
+        heldObjRB.isKinematic = false;
+        heldObjRB.velocity = playerRB.velocity;
+        heldObjRB.angularVelocity = playerRB.angularVelocity;
+
+        heldObj.layer = 0;
         heldObj = null;
         
         
