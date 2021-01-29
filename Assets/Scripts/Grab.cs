@@ -13,7 +13,7 @@ public class Grab : MonoBehaviour
     public Transform playerCam;
     public float throwStrength = 5f;
     private float grabRange = 2.5f;
-    public bool rightHandIsFree = true;
+    public bool rightHandFree = true;
     private RaycastHit hit;
     public Text useText;
 
@@ -21,7 +21,7 @@ public class Grab : MonoBehaviour
     void Start()
     {
         rightHandObj = null;
-        rightHandIsFree = true;
+        rightHandFree = true;
     }
 
     // Update is called once per frame
@@ -33,7 +33,7 @@ public class Grab : MonoBehaviour
             GameObject hitObj = hit.collider.gameObject;
             if (hitObj.CompareTag("Grabbable"))
             {
-                if (rightHandIsFree)
+                if (rightHandFree)
                 {
                     useText.text = "Pickup " + hit.collider.gameObject.name + " (LMB)";
                 }
@@ -44,7 +44,7 @@ public class Grab : MonoBehaviour
             }
             else if (hitObj.CompareTag("Placeable Surface"))
             {
-                if (!rightHandIsFree)
+                if (!rightHandFree)
                 {
                     useText.text = "Place " + rightHandObj.name + " into " + hit.collider.gameObject.name + " (LMB)";
                 }
@@ -61,13 +61,21 @@ public class Grab : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            if (rightHandIsFree)
+            if (rightHandFree)
             {
                 Pickup();
             }
             else
             {
-                Drop();
+                if (Physics.SphereCast(playerCam.position, .1f, playerCam.forward, out hit, grabRange) && hit.collider.gameObject.CompareTag("Placeable Surface"))
+                {
+                    Place(hit);
+                }
+                else
+                {
+                    Drop();
+                }
+                
             }
         }
 
@@ -78,19 +86,26 @@ public class Grab : MonoBehaviour
         if (Physics.SphereCast(playerCam.position, .1f, playerCam.forward, out hit, grabRange) &&
                      (hit.collider.gameObject.CompareTag("Grabbable") || hit.collider.gameObject.CompareTag("Grabbable Container")))
         {
-            GameObject hand;
             GameObject heldObj;
 
-            hand = rightHand;
             heldObj = rightHandObj;
-            rightHandIsFree = false;
+            
+            // if (heldObj.transform.parent != null)
+            // {
+            //     if (heldObj.transform.parent.GetComponent<PlaceableNode>())
+            //     {
+            //         heldObj.transform.parent.GetComponent<PlaceableNode>().SendObj();
+            //     }
+            // }
+
+            rightHandFree = false;
             Debug.Log(hit.transform.gameObject.name + " Picked Up");
 
             hit.collider.gameObject.layer = 10;
 
-            hit.collider.gameObject.transform.parent = hand.transform;
-            hit.transform.position = hand.transform.position;
-            hit.transform.rotation = hand.transform.rotation;
+            hit.collider.gameObject.transform.parent = rightHand.transform;
+            hit.transform.position = rightHand.transform.position;
+            hit.transform.rotation = rightHand.transform.rotation;
             heldObj = hit.collider.gameObject;
 
             hit.collider.gameObject.GetComponent<Rigidbody>().useGravity = false;
@@ -105,7 +120,7 @@ public class Grab : MonoBehaviour
         GameObject heldObj;
 
         heldObj = rightHandObj;
-        rightHandIsFree = true;
+        rightHandFree = true;
 
         heldObj.transform.parent = null;
 
@@ -152,8 +167,30 @@ public class Grab : MonoBehaviour
 
         heldObj.layer = 0;
         heldObj = null;
-        
-        
 
+    }
+
+    void Place(RaycastHit hit)
+    {
+        PlaceableNode pNode = hit.collider.GetComponent<PlaceableNode>();
+
+        if (pNode.CheckIfFull())
+        {
+            Debug.Log("PlaceableNode is full");
+            return;
+        }
+        else
+        {
+            Rigidbody heldObjRB = rightHandObj.GetComponent<Rigidbody>();
+
+            heldObjRB.isKinematic = true;
+
+            rightHandObj.transform.parent = null;
+
+            pNode.ReceiveObj(rightHandObj);
+
+            //rightHandObj = null;
+
+        }
     }
 }
