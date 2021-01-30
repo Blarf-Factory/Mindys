@@ -103,10 +103,22 @@ public class Grab : MonoBehaviour
 
             hit.collider.gameObject.layer = 10;
 
+            Transform hitParent = hit.collider.transform.parent;
+
+            if (hitParent != null)
+            {
+                 if (hitParent.GetComponent<PlaceableNode>())
+                 {
+                    hitParent.GetComponent<PlaceableNode>().SendObj();
+                 }
+            }
+
             hit.collider.gameObject.transform.parent = rightHand.transform;
             hit.transform.position = rightHand.transform.position;
             hit.transform.rotation = rightHand.transform.rotation;
             heldObj = hit.collider.gameObject;
+
+            
 
             hit.collider.gameObject.GetComponent<Rigidbody>().useGravity = false;
             hit.collider.gameObject.GetComponent<Rigidbody>().isKinematic = true;
@@ -189,7 +201,7 @@ public class Grab : MonoBehaviour
 
             pNode.ReceiveObj(rightHandObj);
 
-            //rightHandObj = null;
+            rightHandFree = true;
 
         }
     }
